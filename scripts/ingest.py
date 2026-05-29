@@ -1,49 +1,108 @@
+"""Ingest Section_*.md files into Qdrant with a pluggable chunker.
+
+Usage:
+    uv run scripts/ingest.py --chunker recursive --collection notes_recursive_bge
+    uv run scripts/ingest.py --chunker fixed     --collection notes_fixed_bge
+"""
+
+from __future__ import annotations
+
+import argparse
+import glob
+import os
+import time
+from typing import Callable
+
+from langchain_text_splitters import RecursiveCharacterTextSplitter
 from qdrant_client import QdrantClient
-from qdrant_client.models import VectorParams, Distance, PointStruct
+from qdrant_client.models import Distance, PointStruct, VectorParams
 from sentence_transformers import SentenceTransformer
 
-client = QdrantClient("http://localhost:6333")
+MODEL_NAME = "BAAI/bge-small-en-v1.5"
+EMBED_DIM = 384
+CHUNK_SIZE = 500
+CHUNK_OVERLAP = 100
 
-client.recreate_collection(
-    collection_name="SDN",
-    vectors_config=VectorParams(size=384, distance=Distance.COSINE)
-)
+Chunker = Callable[[str], list[str]]
 
-model = SentenceTransformer("BAAI/bge-small-en-v1.5")
 
-with open("Section_B_SDN.md","r", encoding="utf-8") as f:
-    text = f.read()
+def fixed_chunker(text: str, size: int = CHUNK_SIZE, overlap: int = CHUNK_OVERLAP) -> list[str]:
+    """Naive fixed-window chunker — slices by character count, ignores structure."""
+    step = size - overlap
+    return [text[i : i + size] for i in range(0, len(text), step) if text[i : i + size].strip()]
 
-chunk_size = 200
-overlap = 50
 
-chunks = []
+def recursive_chunker(text: str, size: int = CHUNK_SIZE, overlap: int = CHUNK_OVERLAP) -> list[str]:
+    """LangChain RecursiveCharacterTextSplitter — respects paragraph/sentence boundaries."""
+    splitter = RecursiveCharacterTextSplitter(chunk_size=size, chunk_overlap=overlap)
+    return splitter.split_text(text)
 
-for i in range(0, len(text), chunk_size - overlap):
-    chunk = text[i:i + chunk_size]
-    chunks.append(chunk)
 
-vectors = model.encode(chunks)
+CHUNKERS: dict[str, Chunker] = {
+    "fixed": fixed_chunker,
+    "recursive": recursive_chunker,
+}
 
-# PointStruct imports the structure/template Qdrant uses for storing data.
 
-points = []
+def reset_collection(client: QdrantClient, name: str, dim: int) -> None:
+    if client.collection_exists(name):
+        client.delete_collection(name)
+    client.create_collection(
+        collection_name=name,
+        vectors_config=VectorParams(size=dim, distance=Distance.COSINE),
+    )
 
-for i, (v, t) in enumerate(zip(vectors, chunks)):
-    points.append(PointStruct(id=i, vector=v.tolist(), payload={"text": t}))
 
-client.upsert(
-    collection_name="SDN",
-    points=points
-)
+def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--chunker", choices=list(CHUNKERS), required=True)
+    parser.add_argument("--collection", required=True)
+    parser.add_argument(
+        "--glob",
+        default=os.path.join(os.path.dirname(__file__), "Section_*.md"),
+        help="Glob pattern for source markdown files.",
+    )
+    parser.add_argument("--qdrant-url", default="http://localhost:6333")
+    args = parser.parse_args()
 
-query = "Data Plane and Control Plane in SDN"
+    t0 = time.perf_counter()
 
-qvec = model.encode(query).tolist()
+    files = sorted(glob.glob(args.glob))
+    if not files:
+        raise SystemExit(f"No files matched: {args.glob}")
 
-hits = client.query_points(
-    collection_name="SDN", query=qvec, limit=3, with_payload=True
-).points
+    chunker = CHUNKERS[args.chunker]
 
-for h in hits:
-    print(f"{h.score:.4f} ----->> {h.payload['text']}")
+    all_chunks: list[str] = []
+    metadata: list[dict] = []
+    for path in files:
+        with open(path, "r", encoding="utf-8") as f:
+            text = f.read()
+        chunks = chunker(text)
+        source = os.path.basename(path)
+        for idx, ch in enumerate(chunks):
+            all_chunks.append(ch)
+            metadata.append({"source": source, "chunk_id": idx, "text": ch})
+
+    print(f"Embedding {len(all_chunks)} chunks with {MODEL_NAME}...")
+    model = SentenceTransformer(MODEL_NAME)
+    vectors = model.encode(all_chunks, batch_size=64, show_progress_bar=True)
+
+    client = QdrantClient(args.qdrant_url)
+    reset_collection(client, args.collection, EMBED_DIM)
+
+    points = [
+        PointStruct(id=i, vector=v.tolist(), payload=meta)
+        for i, (v, meta) in enumerate(zip(vectors, metadata))
+    ]
+    client.upsert(collection_name=args.collection, points=points)
+
+    elapsed = time.perf_counter() - t0
+    print(
+        f"Ingested {len(all_chunks)} chunks from {len(files)} files "
+        f"into '{args.collection}' (chunker={args.chunker}) in {elapsed:.2f} seconds"
+    )
+
+
+if __name__ == "__main__":
+    main()
