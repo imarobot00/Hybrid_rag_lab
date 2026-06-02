@@ -4,3 +4,4 @@ __pycache__/
 *.pyc
 *.pyo
 qdrant_storage/
+notes/
