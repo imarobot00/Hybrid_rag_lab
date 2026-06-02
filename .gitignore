@@ -5,3 +5,4 @@ __pycache__/
 *.pyo
 qdrant_storage/
 notes/
+error_documentation.md
