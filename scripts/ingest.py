@@ -14,13 +14,16 @@ import time
 from typing import Callable
 
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-from qdrant_client import QdrantClient
+from qdrant_client import QdrantClient,models
 from qdrant_client.models import Distance, PointStruct, VectorParams
 from sentence_transformers import SentenceTransformer
+from fastembed import TextEmbedding, SparseTextEmbedding
+import uuid
 
 #model for embedding the text chunks, and chunking parameters
 MODEL_NAME = "BAAI/bge-small-en-v1.5"
-EMBED_DIM = 384
+SPARSE_MODEL_NAME = "Qdrant/bm25"
+EMBED_DIM = 384  # bge-small-en-v1.5 is 384-dimensional
 CHUNK_SIZE = 500
 CHUNK_OVERLAP = 100
 
@@ -107,9 +110,60 @@ def main() -> None:
     
     ## Initialize Qdrant client and print existing collections
     client = QdrantClient("http://localhost:6333")
-    print("Existing collections:", client.get_collections())
 
+    # Delete and recreate the collection so each run starts fresh.
+    # recreate_collection() is deprecated — use this pattern instead.
+    if client.collection_exists("SDN"):
+        client.delete_collection("SDN")
+    client.create_collection(
+        collection_name="SDN",
+        vectors_config={
+            "dense": models.VectorParams(
+                size=EMBED_DIM,                   # must match the embedding model (384 for bge-small)
+                distance=models.Distance.COSINE,
+            ),
+        },
+        sparse_vectors_config={
+            "bm25": models.SparseVectorParams(
+                modifier=models.Modifier.IDF,     # Qdrant applies IDF weighting server-side
+            ),
+        },
+    )
 
+    # Load and chunk the markdown file.
+    with open("Section_B_SDN.md", "r", encoding="utf-8") as f:
+        text = f.read()
+    chunks = recursive_chunker(text, size=CHUNK_SIZE, overlap=CHUNK_OVERLAP)
+
+    # Instantiate both encoders (model names are strings, not objects).
+    dense_embedder  = TextEmbedding(model_name=MODEL_NAME)
+    sparse_embedder = SparseTextEmbedding(model_name=SPARSE_MODEL_NAME)
+
+    # Embed all chunks in one batch (faster than one-by-one).
+    # .embed() returns a generator; list() materialises it.
+    dense_vecs  = list(dense_embedder.embed(chunks))   # List[np.ndarray], shape [384]
+    sparse_vecs = list(sparse_embedder.embed(chunks))  # List[SparseEmbedding]
+
+    points = []
+    for idx, (chunk, dv, sv) in enumerate(zip(chunks, dense_vecs, sparse_vecs)):
+        points.append(
+            PointStruct(
+                id=idx,
+                vector={
+                    "dense": dv.tolist(),                     # numpy array → plain list
+                    "bm25": models.SparseVector(              # BM25 sparse vector
+                        indices=sv.indices.tolist(),
+                        values=sv.values.tolist(),
+                    ),
+                },
+                payload={"text": chunk, "source": "Section_B_SDN.md", "chunk_id": idx},
+            )
+        )
+
+    client.upsert(collection_name="SDN", points=points)
+    print(f"Ingested {len(chunks)} chunks into 'SDN' collection.")
+
+    
 
 if __name__ == "__main__":
     main()
