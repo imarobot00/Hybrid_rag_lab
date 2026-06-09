@@ -13,12 +13,18 @@ import os
 from dotenv import load_dotenv
 from groq import Groq
 from qdrant_client import QdrantClient
-from sentence_transformers import SentenceTransformer
 
-EMBED_MODEL = "BAAI/bge-small-en-v1.5"
-DEFAULT_COLLECTION = "notes_recursive_bge"
-DEFAULT_TOP_K = 5
-LLM_MODEL = "llama-3.3-70b-versatile"
+from fastembed import TextEmbedding, SparseTextEmbedding
+from sentence_transformers import CrossEncoder
+from qdrant_client import models
+
+DENSE_MODEL_NAME    = "BAAI/bge-small-en-v1.5"
+SPARSE_MODEL_NAME   = "Qdrant/bm25"
+RERANKER_MODEL_NAME = "cross-encoder/ms-marco-MiniLM-L-6-v2"
+DEFAULT_COLLECTION  = "SDN"            # ← hybrid collection
+DEFAULT_TOP_K       = 5
+CANDIDATES          = 25               # over-fetch for reranker
+LLM_MODEL           = "llama-3.3-70b-versatile"
 
 PROMPT_TEMPLATE = """You are a helpful assistant. Answer the user's question using ONLY the context below.
 If the answer is not in the context, say "I don't know based on the provided notes."
@@ -32,19 +38,57 @@ Question: {question}
 Answer:"""
 
 
-def retrieve(client: QdrantClient, embedder: SentenceTransformer, collection: str, question: str, top_k: int) -> list[dict]:
-    qvec = embedder.encode(question).tolist()
-    hits = client.query_points(
-        collection_name=collection, query=qvec, limit=top_k, with_payload=True
+def retrieve(
+    client: QdrantClient,
+    dense_embedder: TextEmbedding,
+    sparse_embedder: SparseTextEmbedding,
+    reranker: CrossEncoder,
+    collection: str,
+    question: str,
+    top_k: int,
+) -> list[dict]:
+    # 1. Embed the question with both encoders.
+    dense_vec  = list(dense_embedder.embed([question]))[0]
+    sparse_vec = list(sparse_embedder.embed([question]))[0]
+
+    # 2. Hybrid retrieve CANDIDATES results via RRF fusion (dense + BM25).
+    fused = client.query_points(
+        collection_name=collection,
+        prefetch=[
+            models.Prefetch(
+                query=dense_vec.tolist(),
+                using="dense",
+                limit=CANDIDATES,
+            ),
+            models.Prefetch(
+                query=models.SparseVector(
+                    indices=sparse_vec.indices.tolist(),
+                    values=sparse_vec.values.tolist(),
+                ),
+                using="bm25",
+                limit=CANDIDATES,
+            ),
+        ],
+        query=models.FusionQuery(fusion=models.Fusion.RRF),
+        limit=CANDIDATES,
+        with_payload=True,
     ).points
+
+    # 3. Rerank the fused candidates with the cross-encoder.
+    pairs = [(question, h.payload.get("text", "")) for h in fused]
+    rerank_scores = reranker.predict(pairs)
+
+    # 4. Sort by reranker score (desc) and take top_k.
+    ranked = sorted(zip(fused, rerank_scores), key=lambda x: x[1], reverse=True)[:top_k]
+
     return [
         {
-            "score": h.score,
+            "score": float(score),   # reranker score, not RRF
             "source": h.payload.get("source", "?"),
             "chunk_id": h.payload.get("chunk_id", -1),
             "text": h.payload.get("text", ""),
         }
-        for h in hits
+        for h, score in ranked
     ]
 
 
@@ -78,11 +122,21 @@ def main() -> None:
     if not os.getenv("GROQ_API_KEY"):
         raise SystemExit("GROQ_API_KEY not found in environment (.env).")
 
-    embedder = SentenceTransformer(EMBED_MODEL)
+    dense_embedder  = TextEmbedding(model_name=DENSE_MODEL_NAME)
+    sparse_embedder = SparseTextEmbedding(model_name=SPARSE_MODEL_NAME)
+    reranker        = CrossEncoder(RERANKER_MODEL_NAME)
     qclient = QdrantClient(args.qdrant_url)
     gclient = Groq()
 
-    hits = retrieve(qclient, embedder, args.collection, args.question, args.top_k)
+    hits = retrieve(
+        qclient,
+        dense_embedder,
+        sparse_embedder,
+        reranker,
+        args.collection,
+        args.question,
+        args.top_k,
+    )
     context = build_context(hits)
 
     if args.show_context:
