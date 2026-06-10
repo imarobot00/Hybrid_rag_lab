@@ -46,6 +46,7 @@ class QueryResponse(BaseModel):
     answer: str
     variants: list[str]
     sources: list[Source]
+    contexts: list[str]
     pool_size: int
 
 

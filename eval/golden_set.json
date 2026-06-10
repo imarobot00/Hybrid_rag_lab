@@ -1,0 +1,162 @@
+[
+  {
+    "id": "sdn-001",
+    "question": "What are the three layers of SDN architecture?",
+    "ground_truth": "The three layers are the Application Layer (network apps like firewall, load balancer, monitoring), the Control Layer (SDN Controller such as ONOS, ODL, Ryu that makes all forwarding decisions and maintains a global network view), and the Infrastructure Layer (OpenFlow switches and routers that forward packets based on rules from the controller).",
+    "source_document": "Section_B_SDN.md",
+    "expected_chunk": "Section_B_SDN.md#chunk_q9",
+    "qtype": "factoid"
+  },
+  {
+    "id": "sdn-002",
+    "question": "What is the difference between the Southbound Interface and the Northbound Interface in SDN?",
+    "ground_truth": "The Southbound Interface (SBI) connects the controller to switches using protocols like OpenFlow, NETCONF, OVSDB, and P4Runtime to program flow tables and configure switches. The Northbound Interface (NBI) connects the controller to applications using REST API or gRPC, allowing apps to request network services like topology info, stats, and flow rules.",
+    "source_document": "Section_B_SDN.md",
+    "expected_chunk": "Section_B_SDN.md#chunk_q10",
+    "qtype": "factoid"
+  },
+  {
+    "id": "sdn-003",
+    "question": "How does OpenFlow handle a packet when no matching flow rule exists in the switch?",
+    "ground_truth": "When no match is found in the flow tables, the switch sends the packet to the controller via a Packet-In message. The controller then decides what to do and installs a new flow rule via a Flow-Mod message. Future matching packets are then handled by the switch without controller involvement.",
+    "source_document": "Section_B_SDN.md",
+    "expected_chunk": "Section_B_SDN.md#chunk_q11",
+    "qtype": "synthesis"
+  },
+  {
+    "id": "sdn-004",
+    "question": "Why is the Controller Placement Problem (CPP) considered NP-hard?",
+    "ground_truth": "The Controller Placement Problem is NP-hard because it is equivalent to the facility location problem. Given a network graph G = (V, E), you must select a subset of nodes as controller locations and assign each switch to its nearest controller while optimizing latency, load balancing, and reliability. For large networks, exact solutions are impractical, so heuristics and metaheuristics like GA, PSO, and ACO are used.",
+    "source_document": "Section_B_SDN.md",
+    "expected_chunk": "Section_B_SDN.md#chunk_q12",
+    "qtype": "reasoning"
+  },
+  {
+    "id": "sdn-005",
+    "question": "What throughput can ONOS achieve compared to Ryu?",
+    "ground_truth": "ONOS can achieve approximately 500K flows per second throughput, while Ryu achieves approximately 30K flows per second. This is because ONOS uses a distributed cluster architecture while Ryu is single-threaded.",
+    "source_document": "Section_B_SDN.md",
+    "expected_chunk": "Section_B_SDN.md#chunk_q13",
+    "qtype": "factoid"
+  },
+  {
+    "id": "sdn-006",
+    "question": "What are the main scalability challenges in SDN control planes?",
+    "ground_truth": "The main scalability challenges are: controller bottleneck (central controller must process ALL Packet-In events), flow table size (switch TCAM is limited to thousands of entries), control channel latency (distant switches have high RTT to controller), state consistency (distributed controllers must synchronize state), and topology discovery (LLDP overhead grows with network size).",
+    "source_document": "Section_B_SDN.md",
+    "expected_chunk": "Section_B_SDN.md#chunk_q15",
+    "qtype": "factoid"
+  },
+  {
+    "id": "sdn-007",
+    "question": "How does a Genetic Algorithm solve the Multi-Controller Placement Problem?",
+    "ground_truth": "A Genetic Algorithm solves M-CPP by: generating random placement solutions (population/chromosomes), evaluating each solution's fitness (lower latency = higher fitness), selecting the best solutions as parents, combining two parent solutions via crossover to create children, randomly mutating controller locations in some children, and repeating until convergence or max generations.",
+    "source_document": "Section_B_SDN.md",
+    "expected_chunk": "Section_B_SDN.md#chunk_q17",
+    "qtype": "synthesis"
+  },
+  {
+    "id": "sdn-008",
+    "question": "What is Google's B4 network and what did it achieve?",
+    "ground_truth": "Google's B4 is an SDN-managed WAN connecting data centers. It achieved over 99% link utilization via centralized traffic engineering.",
+    "source_document": "Section_B_SDN.md",
+    "expected_chunk": "Section_B_SDN.md#chunk_q19",
+    "qtype": "factoid"
+  },
+  {
+    "id": "sdn-009",
+    "question": "What is P4 and how does it differ from a traditional fixed-function ASIC?",
+    "ground_truth": "P4 is a domain-specific programming language for defining how packets are processed by network devices. Unlike traditional fixed-function ASICs that only process predefined protocols (Ethernet, IP, TCP), P4-programmable switches can be programmed to parse and process any protocol, including custom ones. P4 provides flexibility to reprogram anytime while still achieving line-rate performance on P4-capable hardware like Tofino.",
+    "source_document": "Section_B_SDN.md",
+    "expected_chunk": "Section_B_SDN.md#chunk_q20",
+    "qtype": "synthesis"
+  },
+  {
+    "id": "sdn-010",
+    "question": "What are the three design goals of P4?",
+    "ground_truth": "The three design goals of P4 (the 'Three Ps') are: Protocol Independence (parser and processing are not tied to any specific protocol), Target Independence (same P4 program can run on different hardware targets like ASIC, FPGA, or software switch), and Reconfigurability (switch behavior can be changed at runtime by loading a new P4 program).",
+    "source_document": "Section_B_SDN.md",
+    "expected_chunk": "Section_B_SDN.md#chunk_q22",
+    "qtype": "factoid"
+  },
+  {
+    "id": "sdn-011",
+    "question": "What are the five core P4_16 language abstractions and what does each do?",
+    "ground_truth": "The five core abstractions are: Parser (extracts headers from raw packet bit stream), Control Block (applies match-action logic using tables and conditionals), Table (defines match fields and associated actions, populated by the control plane), Action (defines what to do like forward, drop, or modify fields), and Extern (interface to hardware-specific features like counters, meters, and registers).",
+    "source_document": "Section_B_SDN.md",
+    "expected_chunk": "Section_B_SDN.md#chunk_q24",
+    "qtype": "factoid"
+  },
+  {
+    "id": "sdn-012",
+    "question": "What is the four-stage P4 development workflow?",
+    "ground_truth": "The four stages are: Write (developer writes P4 program defining parser, tables, actions), Compile (P4 compiler p4c translates program to target-specific binary), Load (binary is loaded onto the target device via P4Runtime API), and Populate (control plane populates table entries at runtime via P4Runtime or SDN controller).",
+    "source_document": "Section_B_SDN.md",
+    "expected_chunk": "Section_B_SDN.md#chunk_q25",
+    "qtype": "factoid"
+  },
+  {
+    "id": "sdn-013",
+    "question": "What are the key differences between P4_14 and P4_16?",
+    "ground_truth": "P4_16 introduced a modular architecture model (vs P4_14's monolithic fixed pipeline), strong typing (vs weak), target-independent portability, extern objects for counters/meters (vs built-in primitives), general control blocks with if/else (vs table-centric control flow), and support for formal verification. P4_16 can also compile P4_14 programs for backward compatibility.",
+    "source_document": "Section_B_SDN.md",
+    "expected_chunk": "Section_B_SDN.md#chunk_q23",
+    "qtype": "synthesis"
+  },
+  {
+    "id": "sdn-014",
+    "question": "What is the East-West Interface in SDN and why is it needed?",
+    "ground_truth": "The East-West Interface (EBI) is the communication channel between SDN controllers. It uses custom protocols like ONOS Raft or ODL Akka to synchronize state between distributed controllers. It is needed when multiple controllers are deployed so they can share network state and coordinate decisions.",
+    "source_document": "Section_B_SDN.md",
+    "expected_chunk": "Section_B_SDN.md#chunk_q10",
+    "qtype": "synthesis"
+  },
+  {
+    "id": "sdn-015",
+    "question": "Why might you assign a switch to a more distant controller instead of the nearest one?",
+    "ground_truth": "You might assign a switch to a more distant controller when the nearest controller is already overloaded. Load balancing requires distributing switches evenly across controllers so no single controller becomes a bottleneck. Sometimes there is a trade-off between minimizing latency (nearest controller) and balancing load (less busy controller).",
+    "source_document": "Section_B_SDN.md",
+    "expected_chunk": "Section_B_SDN.md#chunk_q16",
+    "qtype": "reasoning"
+  },
+  {
+    "id": "sdn-016",
+    "question": "What are the fields in an OpenFlow flow table entry?",
+    "ground_truth": "An OpenFlow flow table entry contains: Match Fields (what to match on, such as Src IP, Dst IP, MAC, Port, VLAN, Protocol), Priority (higher priority is checked first), Counters (statistics like packet count and byte count), Actions (what to do with matched packets like forward, drop, modify header, or send to controller), Timeouts (idle timeout for no traffic and hard timeout for absolute expiry), and Cookie (controller-assigned label for tracking).",
+    "source_document": "Section_B_SDN.md",
+    "expected_chunk": "Section_B_SDN.md#chunk_q11",
+    "qtype": "factoid"
+  },
+  {
+    "id": "sdn-017",
+    "question": "How does the clustering-based approach work for multi-controller placement?",
+    "ground_truth": "The clustering-based approach works in two steps: first, cluster switches into groups using K-Means or spectral clustering; then place one controller per cluster at the cluster center or median. This naturally balances load and minimizes intra-cluster latency, but the disadvantage is that cluster boundaries may not align with optimal placement.",
+    "source_document": "Section_B_SDN.md",
+    "expected_chunk": "Section_B_SDN.md#chunk_q17",
+    "qtype": "synthesis"
+  },
+  {
+    "id": "sdn-018",
+    "question": "What makes ISP/Telco SDN deployment different from data center deployment?",
+    "ground_truth": "ISP/Telco deployments differ from data center deployments in several ways: they have thousands of nodes across a country (vs hundreds in one location), high geographic latency (vs very low), irregular topologies like mesh and ring (vs regular leaf-spine), many controllers placed strategically (vs 1-3), and the key concerns are latency, fault tolerance, and regulatory compliance (vs throughput and microsegmentation). They also face challenges like regulatory data residency requirements and SLAs requiring 99.999% uptime.",
+    "source_document": "Section_B_SDN.md",
+    "expected_chunk": "Section_B_SDN.md#chunk_q18",
+    "qtype": "reasoning"
+  },
+  {
+    "id": "sdn-019",
+    "question": "What solutions exist for SDN scalability issues?",
+    "ground_truth": "Solutions include: distributed controllers (deploy ONOS/ODL clusters, partition switches), hierarchical control (local controllers per domain with global coordinator), proactive flow rules (pre-install rules to reduce Packet-In messages), flow aggregation (wildcard rules to reduce TCAM usage), network partitioning (divide into smaller controller domains), P4 programmable switches (handle decisions locally in data plane), and caching (cache frequent forwarding decisions at switches).",
+    "source_document": "Section_B_SDN.md",
+    "expected_chunk": "Section_B_SDN.md#chunk_q15",
+    "qtype": "synthesis"
+  },
+  {
+    "id": "sdn-020",
+    "question": "What are the two variants of latency minimization in controller placement and what do they optimize?",
+    "ground_truth": "The two variants are: average-case latency minimization (minimize 1/|V| * sum of d(v, c(v)) for all switches, which minimizes overall average delay) and worst-case latency minimization (minimize the maximum d(v, c(v)) across all switches, which ensures no switch is too far from its controller). In reactive mode, high latency means slow first-packet forwarding and poor user experience.",
+    "source_document": "Section_B_SDN.md",
+    "expected_chunk": "Section_B_SDN.md#chunk_q16",
+    "qtype": "reasoning"
+  }
+]

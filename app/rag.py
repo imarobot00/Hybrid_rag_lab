@@ -161,5 +161,6 @@ def answer(question: str) -> dict:
             {"chunk_id": h["chunk_id"], "source": h["source"], "score": h["score"]}
             for h in final
         ],
+        "contexts": [h["text"] for h in final],
         "pool_size": len(pooled),
     }
