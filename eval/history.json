@@ -1,0 +1,144 @@
+[
+  {
+    "timestamp": "2026-06-10T19:03:35",
+    "metrics": {
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.9126362088295196,
+      "context_precision": 0.999999999975,
+      "context_recall": NaN
+    },
+    "per_pair": [
+      {
+        "id": "row-0",
+        "question": "What are the three layers of SDN architecture?",
+        "faithfulness": null,
+        "answer_relevancy": 0.9999999999999994,
+        "context_precision": null,
+        "context_recall": null
+      },
+      {
+        "id": "row-1",
+        "question": "What is the difference between the Southbound Interface and the Northbound Interface in SDN?",
+        "faithfulness": null,
+        "answer_relevancy": 0.827377426579154,
+        "context_precision": null,
+        "context_recall": null
+      },
+      {
+        "id": "row-2",
+        "question": "How does OpenFlow handle a packet when no matching flow rule exists in the switch?",
+        "faithfulness": null,
+        "answer_relevancy": 0.8929728374971733,
+        "context_precision": null,
+        "context_recall": null
+      },
+      {
+        "id": "row-3",
+        "question": "Why is the Controller Placement Problem (CPP) considered NP-hard?",
+        "faithfulness": null,
+        "answer_relevancy": 0.9303259408441867,
+        "context_precision": null,
+        "context_recall": null
+      },
+      {
+        "id": "row-4",
+        "question": "What throughput can ONOS achieve compared to Ryu?",
+        "faithfulness": null,
+        "answer_relevancy": 0.8716563150051503,
+        "context_precision": null,
+        "context_recall": null
+      },
+      {
+        "id": "row-5",
+        "question": "What are the main scalability challenges in SDN control planes?",
+        "faithfulness": null,
+        "answer_relevancy": 0.9999999999999991,
+        "context_precision": null,
+        "context_recall": null
+      },
+      {
+        "id": "row-6",
+        "question": "How does a Genetic Algorithm solve the Multi-Controller Placement Problem?",
+        "faithfulness": null,
+        "answer_relevancy": 0.855105622142731,
+        "context_precision": null,
+        "context_recall": null
+      },
+      {
+        "id": "row-7",
+        "question": "What is Google's B4 network and what did it achieve?",
+        "faithfulness": null,
+        "answer_relevancy": 0.9422801319697952,
+        "context_precision": null,
+        "context_recall": null
+      },
+      {
+        "id": "row-8",
+        "question": "What is P4 and how does it differ from a traditional fixed-function ASIC?",
+        "faithfulness": null,
+        "answer_relevancy": 0.806643814257006,
+        "context_precision": null,
+        "context_recall": null
+      },
+      {
+        "id": "row-9",
+        "question": "What are the three design goals of P4?",
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.9999999999999996,
+        "context_precision": 0.999999999975,
+        "context_recall": null
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-06-10T19:30:08",
+    "metrics": {
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.9044665039851327,
+      "context_precision": 0.8933333333043889,
+      "context_recall": 0.5833333333333333
+    },
+    "per_pair": [
+      {
+        "id": "row-0",
+        "question": "What are the three layers of SDN architecture?",
+        "faithfulness": null,
+        "answer_relevancy": 0.9999999999999994,
+        "context_precision": 0.94999999997625,
+        "context_recall": null
+      },
+      {
+        "id": "row-1",
+        "question": "What is the difference between the Southbound Interface and the Northbound Interface in SDN?",
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.827377426579154,
+        "context_precision": 0.94999999997625,
+        "context_recall": 0.5
+      },
+      {
+        "id": "row-2",
+        "question": "How does OpenFlow handle a packet when no matching flow rule exists in the switch?",
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.8929728374971733,
+        "context_precision": 0.9999999999666667,
+        "context_recall": 1.0
+      },
+      {
+        "id": "row-3",
+        "question": "Why is the Controller Placement Problem (CPP) considered NP-hard?",
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.9303259408441867,
+        "context_precision": 0.8666666666377778,
+        "context_recall": 0.3333333333333333
+      },
+      {
+        "id": "row-4",
+        "question": "What throughput can ONOS achieve compared to Ryu?",
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.8716563150051503,
+        "context_precision": 0.699999999965,
+        "context_recall": 0.5
+      }
+    ]
+  }
+]

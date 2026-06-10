@@ -16,6 +16,7 @@ from qdrant_client import QdrantClient, models
 from sentence_transformers import CrossEncoder
 
 from .settings import settings
+from .tracing import traceable
 
 logger = logging.getLogger(__name__)
 
@@ -47,6 +48,7 @@ _groq = Groq(api_key=settings.groq_api_key)
 
 
 # ── Step 1: query expansion ─────────────────────────────────────────────────
+@traceable(run_type="llm", name="expand_query")
 def expand_query(question: str, n: int | None = None) -> list[str]:
     n = n or settings.n_variants
     prompt = (
@@ -66,6 +68,7 @@ def expand_query(question: str, n: int | None = None) -> list[str]:
 
 
 # ── Step 2a: hybrid retrieve for ONE query ──────────────────────────────────
+@traceable(run_type="retriever", name="hybrid_retrieve")
 def hybrid_retrieve(query: str, limit: int) -> list:
     dense_vec = list(_dense.embed([query]))[0]
     sparse_vec = list(_sparse.embed([query]))[0]
@@ -94,6 +97,7 @@ def hybrid_retrieve(query: str, limit: int) -> list:
 
 
 # ── Step 2b: pool over all queries and dedupe by chunk_id ──────────────────
+@traceable(run_type="chain", name="multi_query_retrieve")
 def multi_query_retrieve(queries: list[str]) -> list:
     seen: set[int] = set()
     pooled: list = []
@@ -107,6 +111,7 @@ def multi_query_retrieve(queries: list[str]) -> list:
 
 
 # ── Step 3: cross-encoder rerank against the ORIGINAL question ─────────────
+@traceable(run_type="tool", name="rerank")
 def rerank(question: str, points: list, top_k: int) -> list[dict]:
     if not points:
         return []
@@ -131,6 +136,7 @@ def _build_context(hits: list[dict]) -> str:
     )
 
 
+@traceable(run_type="llm", name="generate_answer")
 def generate_answer(question: str, hits: list[dict]) -> str:
     if not hits:
         return "I don't know based on the provided notes."
@@ -146,6 +152,7 @@ def generate_answer(question: str, hits: list[dict]) -> str:
 
 
 # ── Public entrypoint ──────────────────────────────────────────────────────
+@traceable(run_type="chain", name="rag_answer")
 def answer(question: str) -> dict:
     """Run the full pipeline and return the answer + provenance."""
     variants = expand_query(question)

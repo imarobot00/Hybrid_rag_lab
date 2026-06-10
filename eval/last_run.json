@@ -2,241 +2,81 @@
   {
     "user_input":"What are the three layers of SDN architecture?",
     "retrieved_contexts":[
-
+      "### Three-Layer SDN Architecture\n```\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502    APPLICATION LAYER                      \u2502\n\u2502    (Firewall, Load Balancer, Monitor)     \u2502\n\u251c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 Northbound API (REST) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2524\n\u2502    CONTROL LAYER                          \u2502\n\u2502    (SDN Controller: ONOS, ODL, Ryu)      \u2502\n\u251c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 Southbound API (OpenFlow) \u2500\u2500\u2500\u2500\u2500\u2524\n\u2502    INFRASTRUCTURE LAYER                   \u2502\n\u2502    (Switches, Routers \u2014 OpenFlow-enabled) \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n```",
+      "| Q# | Topic | Key Takeaway |\n|----|-------|-------------|\n| 9 | SDN Architecture | 3 layers: App, Control, Infra. Control plane decoupled and centralized |\n| 10 | SDN APIs | SBI (down), NBI (up), EBI (sideways), WBI (legacy) |\n| 11 | OpenFlow & Flow Tables | Match-action pipeline; Packet-In\/Flow-Mod for reactive forwarding |\n| 12 | CPP Math Formulation | NP-hard facility location problem; minimize latency + balance load |",
+      "---\n\n## \ud83e\udde0 Memorization Tips\n\n### SDN Layers \u2014 \"ACI\" (top to bottom)\n- **A**pplication (apps like firewall, monitor)\n- **C**ontrol (controller: ONOS, ODL, Ryu)\n- **I**nfrastructure (switches, OpenFlow)\n\n### SDN APIs \u2014 \"SNEW\" (directions)\n- **S**outhbound (down to switches)\n- **N**orthbound (up to apps)\n- **E**ast-West (between controllers)\n- **W**estbound (to legacy devices)",
+      "This section covers SDN architecture, APIs, OpenFlow protocol, controller placement, scalability, and the P4 programming language.\n\n---\n\n## Key Concepts",
+      "| Layer | What It Contains | What It Does |\n|-------|-----------------|-------------|\n| **Application Layer** | Network apps (firewall, load balancer, monitoring) | Uses NBI to program the controller |\n| **Control Layer** | SDN Controller (ONOS, ODL, Ryu, Floodlight) | Makes all forwarding decisions; maintains global network view |\n| **Infrastructure Layer** | OpenFlow switches and routers | Forwards packets based on rules from the controller |\n\n#### Comparison Table"
     ],
-    "response":"ERROR: 500 Server Error: Internal Server Error for url: http:\/\/localhost:8000\/query",
+    "response":"The three layers of SDN architecture are: \n1. Application Layer \n2. Control Layer \n3. Infrastructure Layer [Section_B_SDN.md #chunk7]",
     "reference":"The three layers are the Application Layer (network apps like firewall, load balancer, monitoring), the Control Layer (SDN Controller such as ONOS, ODL, Ryu that makes all forwarding decisions and maintains a global network view), and the Infrastructure Layer (OpenFlow switches and routers that forward packets based on rules from the controller).",
     "faithfulness":null,
-    "answer_relevancy":0.4545926149,
-    "llm_context_precision_without_reference":0.0,
+    "answer_relevancy":1.0,
+    "context_precision":0.95,
     "context_recall":null
   },
   {
     "user_input":"What is the difference between the Southbound Interface and the Northbound Interface in SDN?",
     "retrieved_contexts":[
-
+      "---\n\n### Question 11: OpenFlow, Flow Tables, and the Match-Action Pipeline\n\n#### What is OpenFlow?\nOpenFlow is the **most widely used southbound protocol** in SDN. It defines how the SDN controller communicates with switches.\n\n**Analogy:** OpenFlow is the \"language\" the air traffic controller (SDN controller) uses to talk to planes (switches).",
+      "### Three-Layer SDN Architecture\n```\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502    APPLICATION LAYER                      \u2502\n\u2502    (Firewall, Load Balancer, Monitor)     \u2502\n\u251c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 Northbound API (REST) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2524\n\u2502    CONTROL LAYER                          \u2502\n\u2502    (SDN Controller: ONOS, ODL, Ryu)      \u2502\n\u251c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 Southbound API (OpenFlow) \u2500\u2500\u2500\u2500\u2500\u2524\n\u2502    INFRASTRUCTURE LAYER                   \u2502\n\u2502    (Switches, Routers \u2014 OpenFlow-enabled) \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n```",
+      "| Interface | Full Name | Location | Protocols\/Tech | Purpose |\n|-----------|-----------|----------|---------------|---------|\n| **SBI** | Southbound Interface | Controller \u2194 Switches | OpenFlow, NETCONF, OVSDB, P4Runtime, ForCES | Program flow tables, configure switches |\n| **NBI** | Northbound Interface | Controller \u2194 Applications | REST API, gRPC, Java API | Apps request network services (topology, stats, flow rules) |",
+      "| **EBI** | East-West (East-Bound) Interface | Controller \u2194 Controller | Custom protocols (ONOS Raft, ODL Akka) | Synchronize state between distributed controllers |\n| **WBI** | Westbound Interface | Controller \u2194 Legacy Devices | SNMP, CLI, SSH, NETCONF | Manage non-SDN (legacy) devices |",
+      "---\n\n### Question 10: SDN APIs (NB, SB, EB, WB)\n\nSDN has **four types of interfaces** (APIs) \u2014 think of them as the communication channels between different parts of the SDN ecosystem."
     ],
-    "response":"ERROR: 500 Server Error: Internal Server Error for url: http:\/\/localhost:8000\/query",
+    "response":"The Southbound Interface (SBI) and the Northbound Interface (NBI) are two types of interfaces in SDN. The Southbound Interface is used for communication between the SDN controller and the switches, and it supports protocols such as OpenFlow, NETCONF, OVSDB, P4Runtime, and ForCES [Section_B_SDN.md #chunk11]. On the other hand, the Northbound Interface is used for communication between the SDN controller and applications, and it supports protocols such as REST API, gRPC, and Java API [Section_B_SDN.md #chunk11].",
     "reference":"The Southbound Interface (SBI) connects the controller to switches using protocols like OpenFlow, NETCONF, OVSDB, and P4Runtime to program flow tables and configure switches. The Northbound Interface (NBI) connects the controller to applications using REST API or gRPC, allowing apps to request network services like topology info, stats, and flow rules.",
-    "faithfulness":null,
-    "answer_relevancy":0.5287541498,
-    "llm_context_precision_without_reference":0.0,
-    "context_recall":null
+    "faithfulness":1.0,
+    "answer_relevancy":0.8273774266,
+    "context_precision":0.95,
+    "context_recall":0.5
   },
   {
     "user_input":"How does OpenFlow handle a packet when no matching flow rule exists in the switch?",
     "retrieved_contexts":[
-
+      "#### How OpenFlow Works\n1. Packet arrives at switch \u2192 switch checks **flow tables** (pipeline of tables)\n2. **Match found** \u2192 execute the action (forward, drop, modify, etc.)\n3. **No match** \u2192 send packet to controller via **Packet-In** message\n4. Controller decides \u2192 installs new flow rule via **Flow-Mod** message\n5. Future matching packets handled by switch **without controller** involvement\n\n#### Flow Table Entry Structure",
+      "### OpenFlow Messages \u2014 \"PFP\" for the Big Three\n- **P**acket-In (switch \u2192 controller: \"Help!\")\n- **F**low-Mod (controller \u2192 switch: \"Here's the rule\")\n- **P**acket-Out (controller \u2192 switch: \"Send this packet\")\n\n### Controller Placement \u2014 Remember \"LRL\"\n- **L**atency minimization\n- **R**eliability maximization\n- **L**oad balancing",
+      "| Message | Direction | Purpose |\n|---------|-----------|---------|\n| **Packet-In** | Switch \u2192 Controller | \"I don't know what to do with this packet\" |\n| **Flow-Mod** | Controller \u2192 Switch | \"Here's a new rule for handling such packets\" |\n| **Packet-Out** | Controller \u2192 Switch | \"Send this specific packet out port X\" |\n| **Stats-Request\/Reply** | Bidirectional | \"How many packets matched rule Y?\" |\n| **Hello** | Bidirectional | Connection setup, version negotiation |",
+      "---\n\n### Question 11: OpenFlow, Flow Tables, and the Match-Action Pipeline\n\n#### What is OpenFlow?\nOpenFlow is the **most widely used southbound protocol** in SDN. It defines how the SDN controller communicates with switches.\n\n**Analogy:** OpenFlow is the \"language\" the air traffic controller (SDN controller) uses to talk to planes (switches).",
+      "#### Match-Action Pipeline\nOpenFlow 1.3+ supports **multiple flow tables** in a pipeline:\n```\nPacket \u2192 [Table 0] \u2192 [Table 1] \u2192 [Table 2] \u2192 ... \u2192 [Table n] \u2192 Action Set Execution\n```\n- Each table can match different fields\n- A match can send to the next table (`goto-table`) or execute actions\n- This enables complex policies (match VLAN in table 0, match IP in table 1, match port in table 2)\n\n#### SDN Controller Platforms"
     ],
-    "response":"ERROR: 500 Server Error: Internal Server Error for url: http:\/\/localhost:8000\/query",
+    "response":"When no matching flow rule exists in the switch, the switch sends the packet to the controller via a **Packet-In** message [Section_B_SDN.md #chunk16].",
     "reference":"When no match is found in the flow tables, the switch sends the packet to the controller via a Packet-In message. The controller then decides what to do and installs a new flow rule via a Flow-Mod message. Future matching packets are then handled by the switch without controller involvement.",
-    "faithfulness":null,
-    "answer_relevancy":0.5575762179,
-    "llm_context_precision_without_reference":0.0,
-    "context_recall":null
+    "faithfulness":1.0,
+    "answer_relevancy":0.8929728375,
+    "context_precision":1.0,
+    "context_recall":1.0
   },
   {
     "user_input":"Why is the Controller Placement Problem (CPP) considered NP-hard?",
     "retrieved_contexts":[
-
+      "Where:\n- $d(v, p)$ = shortest path distance (latency) between switch $v$ and controller $p$\n- $p(v)$ = the controller assigned to switch $v$\n- $S(p)$ = set of switches assigned to controller $p$\n\n#### This is NP-Hard!\nCPP is equivalent to the **facility location problem**, which is NP-hard. For large networks, exact solutions are impractical \u2192 use heuristics and metaheuristics.\n\n---\n\n### Question 13: Control Plane Performance Metrics for Open-Source SDN Controllers",
+      "| 12 | CPP Math Formulation | NP-hard facility location problem; minimize latency + balance load |\n| 13 | Controller Metrics | Throughput, latency, scalability, availability, consistency |\n| 14 | CPP Approaches | K-center, K-median, GA, PSO, ACO, greedy heuristics |\n| 15 | Scalability Issues | Controller bottleneck, TCAM limits, channel latency; solve with distribution\/aggregation |\n| 16 | Latency & Load Balancing | Minimize avg\/max switch-controller latency; balance switch assignments |",
+      "---\n\n### Question 12: Controller Placement Problem \u2014 Mathematical Formulation\n\n#### What is CPP?\n**The problem:** Given a network of switches, decide **how many controllers** to deploy and **where to place** them to optimize performance.\n\n**Analogy:** Where should you place fire stations in a city? Too few = long response times. Too many = expensive. You need the right number in the right locations.",
+      "**Trade-off:** Sometimes the nearest controller is already overloaded. You may need to assign a switch to a more distant but less busy controller.\n\n---\n\n### Question 17: Clustering and Metaheuristic Techniques (GA, PSO, ACO) for M-CPP\n\n#### What is M-CPP?\n**Multi-Controller Placement Problem (M-CPP):** When you have multiple controllers, deciding where to place each one becomes exponentially complex.",
+      "| Q# | Topic | Key Takeaway |\n|----|-------|-------------|\n| 9 | SDN Architecture | 3 layers: App, Control, Infra. Control plane decoupled and centralized |\n| 10 | SDN APIs | SBI (down), NBI (up), EBI (sideways), WBI (legacy) |\n| 11 | OpenFlow & Flow Tables | Match-action pipeline; Packet-In\/Flow-Mod for reactive forwarding |\n| 12 | CPP Math Formulation | NP-hard facility location problem; minimize latency + balance load |"
     ],
-    "response":"ERROR: 500 Server Error: Internal Server Error for url: http:\/\/localhost:8000\/query",
+    "response":"The Controller Placement Problem (CPP) is equivalent to the **facility location problem**, which is NP-hard. [Section_B_SDN.md #chunk29]",
     "reference":"The Controller Placement Problem is NP-hard because it is equivalent to the facility location problem. Given a network graph G = (V, E), you must select a subset of nodes as controller locations and assign each switch to its nearest controller while optimizing latency, load balancing, and reliability. For large networks, exact solutions are impractical, so heuristics and metaheuristics like GA, PSO, and ACO are used.",
-    "faithfulness":null,
-    "answer_relevancy":0.5562555928,
-    "llm_context_precision_without_reference":0.0,
-    "context_recall":null
+    "faithfulness":1.0,
+    "answer_relevancy":0.9303259408,
+    "context_precision":0.8666666666,
+    "context_recall":0.3333333333
   },
   {
     "user_input":"What throughput can ONOS achieve compared to Ryu?",
     "retrieved_contexts":[
-
+      "| Metric | Ryu | Floodlight | ONOS | OpenDaylight |\n|--------|-----|-----------|------|-------------|\n| **Throughput** | ~30K flows\/sec | ~100K flows\/sec | ~500K flows\/sec | ~100K flows\/sec |\n| **Architecture** | Single-threaded | Multi-threaded | Distributed cluster | Distributed cluster |\n| **Failover** | Manual | Manual | Automatic (Raft) | Automatic (Akka) |\n| **Use Case** | Research\/lab | Medium enterprise | Carrier\/ISP\/5G | Enterprise\/telco |",
+      "### P4 Abstractions \u2014 \"PCTAE\"\n- **P**arser\n- **C**ontrol block\n- **T**able\n- **A**ction\n- **E**xtern\n\n### SDN Controllers by Capability\n- **Research:** Ryu (Python, easy), POX (Python, educational)\n- **Enterprise:** Floodlight (Java, modular)\n- **Carrier-grade:** ONOS (Java, distributed, Raft), OpenDaylight (Java, YANG models)\n\n### Key Production Deployments \u2014 \"BSF\"\n- **B**4 (Google WAN)\n- **S**WAN (Microsoft WAN)\n- **F**abric (Facebook DC)",
+      "---\n\n## \ud83e\udde0 Memorization Tips\n\n### SDN Layers \u2014 \"ACI\" (top to bottom)\n- **A**pplication (apps like firewall, monitor)\n- **C**ontrol (controller: ONOS, ODL, Ryu)\n- **I**nfrastructure (switches, OpenFlow)\n\n### SDN APIs \u2014 \"SNEW\" (directions)\n- **S**outhbound (down to switches)\n- **N**orthbound (up to apps)\n- **E**ast-West (between controllers)\n- **W**estbound (to legacy devices)",
+      "### Three-Layer SDN Architecture\n```\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502    APPLICATION LAYER                      \u2502\n\u2502    (Firewall, Load Balancer, Monitor)     \u2502\n\u251c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 Northbound API (REST) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2524\n\u2502    CONTROL LAYER                          \u2502\n\u2502    (SDN Controller: ONOS, ODL, Ryu)      \u2502\n\u251c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 Southbound API (OpenFlow) \u2500\u2500\u2500\u2500\u2500\u2524\n\u2502    INFRASTRUCTURE LAYER                   \u2502\n\u2502    (Switches, Routers \u2014 OpenFlow-enabled) \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n```",
+      "| Layer | What It Contains | What It Does |\n|-------|-----------------|-------------|\n| **Application Layer** | Network apps (firewall, load balancer, monitoring) | Uses NBI to program the controller |\n| **Control Layer** | SDN Controller (ONOS, ODL, Ryu, Floodlight) | Makes all forwarding decisions; maintains global network view |\n| **Infrastructure Layer** | OpenFlow switches and routers | Forwards packets based on rules from the controller |\n\n#### Comparison Table"
     ],
-    "response":"ERROR: 500 Server Error: Internal Server Error for url: http:\/\/localhost:8000\/query",
+    "response":"ONOS can achieve ~500K flows\/sec, while Ryu can achieve ~30K flows\/sec [Section_B_SDN.md #chunk33].",
     "reference":"ONOS can achieve approximately 500K flows per second throughput, while Ryu achieves approximately 30K flows per second. This is because ONOS uses a distributed cluster architecture while Ryu is single-threaded.",
-    "faithfulness":null,
-    "answer_relevancy":0.5136484975,
-    "llm_context_precision_without_reference":0.0,
-    "context_recall":0.0
-  },
-  {
-    "user_input":"What are the main scalability challenges in SDN control planes?",
-    "retrieved_contexts":[
-
-    ],
-    "response":"ERROR: 500 Server Error: Internal Server Error for url: http:\/\/localhost:8000\/query",
-    "reference":"The main scalability challenges are: controller bottleneck (central controller must process ALL Packet-In events), flow table size (switch TCAM is limited to thousands of entries), control channel latency (distant switches have high RTT to controller), state consistency (distributed controllers must synchronize state), and topology discovery (LLDP overhead grows with network size).",
-    "faithfulness":null,
-    "answer_relevancy":0.5243182936,
-    "llm_context_precision_without_reference":0.0,
-    "context_recall":null
-  },
-  {
-    "user_input":"How does a Genetic Algorithm solve the Multi-Controller Placement Problem?",
-    "retrieved_contexts":[
-
-    ],
-    "response":"ERROR: 500 Server Error: Internal Server Error for url: http:\/\/localhost:8000\/query",
-    "reference":"A Genetic Algorithm solves M-CPP by: generating random placement solutions (population\/chromosomes), evaluating each solution's fitness (lower latency = higher fitness), selecting the best solutions as parents, combining two parent solutions via crossover to create children, randomly mutating controller locations in some children, and repeating until convergence or max generations.",
-    "faithfulness":null,
-    "answer_relevancy":0.4501581604,
-    "llm_context_precision_without_reference":0.0,
-    "context_recall":null
-  },
-  {
-    "user_input":"What is Google's B4 network and what did it achieve?",
-    "retrieved_contexts":[
-
-    ],
-    "response":"ERROR: 500 Server Error: Internal Server Error for url: http:\/\/localhost:8000\/query",
-    "reference":"Google's B4 is an SDN-managed WAN connecting data centers. It achieved over 99% link utilization via centralized traffic engineering.",
-    "faithfulness":null,
-    "answer_relevancy":0.5433581181,
-    "llm_context_precision_without_reference":0.0,
-    "context_recall":null
-  },
-  {
-    "user_input":"What is P4 and how does it differ from a traditional fixed-function ASIC?",
-    "retrieved_contexts":[
-
-    ],
-    "response":"ERROR: 500 Server Error: Internal Server Error for url: http:\/\/localhost:8000\/query",
-    "reference":"P4 is a domain-specific programming language for defining how packets are processed by network devices. Unlike traditional fixed-function ASICs that only process predefined protocols (Ethernet, IP, TCP), P4-programmable switches can be programmed to parse and process any protocol, including custom ones. P4 provides flexibility to reprogram anytime while still achieving line-rate performance on P4-capable hardware like Tofino.",
-    "faithfulness":null,
-    "answer_relevancy":0.5068664071,
-    "llm_context_precision_without_reference":0.0,
-    "context_recall":null
-  },
-  {
-    "user_input":"What are the three design goals of P4?",
-    "retrieved_contexts":[
-
-    ],
-    "response":"ERROR: 500 Server Error: Internal Server Error for url: http:\/\/localhost:8000\/query",
-    "reference":"The three design goals of P4 (the 'Three Ps') are: Protocol Independence (parser and processing are not tied to any specific protocol), Target Independence (same P4 program can run on different hardware targets like ASIC, FPGA, or software switch), and Reconfigurability (switch behavior can be changed at runtime by loading a new P4 program).",
-    "faithfulness":null,
-    "answer_relevancy":0.4486298078,
-    "llm_context_precision_without_reference":0.0,
-    "context_recall":null
-  },
-  {
-    "user_input":"What are the five core P4_16 language abstractions and what does each do?",
-    "retrieved_contexts":[
-
-    ],
-    "response":"ERROR: 500 Server Error: Internal Server Error for url: http:\/\/localhost:8000\/query",
-    "reference":"The five core abstractions are: Parser (extracts headers from raw packet bit stream), Control Block (applies match-action logic using tables and conditionals), Table (defines match fields and associated actions, populated by the control plane), Action (defines what to do like forward, drop, or modify fields), and Extern (interface to hardware-specific features like counters, meters, and registers).",
-    "faithfulness":null,
-    "answer_relevancy":0.5536296537,
-    "llm_context_precision_without_reference":0.0,
-    "context_recall":null
-  },
-  {
-    "user_input":"What is the four-stage P4 development workflow?",
-    "retrieved_contexts":[
-
-    ],
-    "response":"ERROR: 500 Server Error: Internal Server Error for url: http:\/\/localhost:8000\/query",
-    "reference":"The four stages are: Write (developer writes P4 program defining parser, tables, actions), Compile (P4 compiler p4c translates program to target-specific binary), Load (binary is loaded onto the target device via P4Runtime API), and Populate (control plane populates table entries at runtime via P4Runtime or SDN controller).",
-    "faithfulness":null,
-    "answer_relevancy":0.5084800943,
-    "llm_context_precision_without_reference":0.0,
-    "context_recall":null
-  },
-  {
-    "user_input":"What are the key differences between P4_14 and P4_16?",
-    "retrieved_contexts":[
-
-    ],
-    "response":"ERROR: 500 Server Error: Internal Server Error for url: http:\/\/localhost:8000\/query",
-    "reference":"P4_16 introduced a modular architecture model (vs P4_14's monolithic fixed pipeline), strong typing (vs weak), target-independent portability, extern objects for counters\/meters (vs built-in primitives), general control blocks with if\/else (vs table-centric control flow), and support for formal verification. P4_16 can also compile P4_14 programs for backward compatibility.",
-    "faithfulness":null,
-    "answer_relevancy":0.5005287152,
-    "llm_context_precision_without_reference":0.0,
-    "context_recall":null
-  },
-  {
-    "user_input":"What is the East-West Interface in SDN and why is it needed?",
-    "retrieved_contexts":[
-
-    ],
-    "response":"ERROR: 500 Server Error: Internal Server Error for url: http:\/\/localhost:8000\/query",
-    "reference":"The East-West Interface (EBI) is the communication channel between SDN controllers. It uses custom protocols like ONOS Raft or ODL Akka to synchronize state between distributed controllers. It is needed when multiple controllers are deployed so they can share network state and coordinate decisions.",
-    "faithfulness":null,
-    "answer_relevancy":0.564914807,
-    "llm_context_precision_without_reference":0.0,
-    "context_recall":null
-  },
-  {
-    "user_input":"Why might you assign a switch to a more distant controller instead of the nearest one?",
-    "retrieved_contexts":[
-
-    ],
-    "response":"ERROR: 500 Server Error: Internal Server Error for url: http:\/\/localhost:8000\/query",
-    "reference":"You might assign a switch to a more distant controller when the nearest controller is already overloaded. Load balancing requires distributing switches evenly across controllers so no single controller becomes a bottleneck. Sometimes there is a trade-off between minimizing latency (nearest controller) and balancing load (less busy controller).",
-    "faithfulness":null,
-    "answer_relevancy":0.4812492131,
-    "llm_context_precision_without_reference":0.0,
-    "context_recall":null
-  },
-  {
-    "user_input":"What are the fields in an OpenFlow flow table entry?",
-    "retrieved_contexts":[
-
-    ],
-    "response":"ERROR: 500 Server Error: Internal Server Error for url: http:\/\/localhost:8000\/query",
-    "reference":"An OpenFlow flow table entry contains: Match Fields (what to match on, such as Src IP, Dst IP, MAC, Port, VLAN, Protocol), Priority (higher priority is checked first), Counters (statistics like packet count and byte count), Actions (what to do with matched packets like forward, drop, modify header, or send to controller), Timeouts (idle timeout for no traffic and hard timeout for absolute expiry), and Cookie (controller-assigned label for tracking).",
-    "faithfulness":null,
-    "answer_relevancy":0.5729944315,
-    "llm_context_precision_without_reference":0.0,
-    "context_recall":1.0
-  },
-  {
-    "user_input":"How does the clustering-based approach work for multi-controller placement?",
-    "retrieved_contexts":[
-
-    ],
-    "response":"ERROR: 500 Server Error: Internal Server Error for url: http:\/\/localhost:8000\/query",
-    "reference":"The clustering-based approach works in two steps: first, cluster switches into groups using K-Means or spectral clustering; then place one controller per cluster at the cluster center or median. This naturally balances load and minimizes intra-cluster latency, but the disadvantage is that cluster boundaries may not align with optimal placement.",
-    "faithfulness":null,
-    "answer_relevancy":0.475036328,
-    "llm_context_precision_without_reference":0.0,
-    "context_recall":0.0
-  },
-  {
-    "user_input":"What makes ISP\/Telco SDN deployment different from data center deployment?",
-    "retrieved_contexts":[
-
-    ],
-    "response":"ERROR: 500 Server Error: Internal Server Error for url: http:\/\/localhost:8000\/query",
-    "reference":"ISP\/Telco deployments differ from data center deployments in several ways: they have thousands of nodes across a country (vs hundreds in one location), high geographic latency (vs very low), irregular topologies like mesh and ring (vs regular leaf-spine), many controllers placed strategically (vs 1-3), and the key concerns are latency, fault tolerance, and regulatory compliance (vs throughput and microsegmentation). They also face challenges like regulatory data residency requirements and SLAs requiring 99.999% uptime.",
-    "faithfulness":null,
-    "answer_relevancy":0.5215521076,
-    "llm_context_precision_without_reference":0.0,
-    "context_recall":0.0
-  },
-  {
-    "user_input":"What solutions exist for SDN scalability issues?",
-    "retrieved_contexts":[
-
-    ],
-    "response":"ERROR: 500 Server Error: Internal Server Error for url: http:\/\/localhost:8000\/query",
-    "reference":"Solutions include: distributed controllers (deploy ONOS\/ODL clusters, partition switches), hierarchical control (local controllers per domain with global coordinator), proactive flow rules (pre-install rules to reduce Packet-In messages), flow aggregation (wildcard rules to reduce TCAM usage), network partitioning (divide into smaller controller domains), P4 programmable switches (handle decisions locally in data plane), and caching (cache frequent forwarding decisions at switches).",
-    "faithfulness":null,
-    "answer_relevancy":0.5484952704,
-    "llm_context_precision_without_reference":0.0,
-    "context_recall":0.0
-  },
-  {
-    "user_input":"What are the two variants of latency minimization in controller placement and what do they optimize?",
-    "retrieved_contexts":[
-
-    ],
-    "response":"ERROR: 500 Server Error: Internal Server Error for url: http:\/\/localhost:8000\/query",
-    "reference":"The two variants are: average-case latency minimization (minimize 1\/|V| * sum of d(v, c(v)) for all switches, which minimizes overall average delay) and worst-case latency minimization (minimize the maximum d(v, c(v)) across all switches, which ensures no switch is too far from its controller). In reactive mode, high latency means slow first-packet forwarding and poor user experience.",
-    "faithfulness":null,
-    "answer_relevancy":0.4796796121,
-    "llm_context_precision_without_reference":0.0,
+    "faithfulness":1.0,
+    "answer_relevancy":0.871656315,
+    "context_precision":0.7,
     "context_recall":0.5
   }
 ]

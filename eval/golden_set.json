@@ -158,5 +158,245 @@
     "source_document": "Section_B_SDN.md",
     "expected_chunk": "Section_B_SDN.md#chunk_q16",
     "qtype": "reasoning"
+  },
+  {
+    "id": "sdn-021",
+    "question": "What is the core idea that distinguishes SDN from a traditional network?",
+    "ground_truth": "The core idea of SDN is that the control plane is separated from the data plane and centralized in a software controller. In a traditional network the control plane and data plane are coupled in every device, so each switch/router makes its own forwarding decisions using distributed protocols like OSPF, STP, and BGP. In SDN the switches become dumb forwarding devices that simply follow instructions from the central controller.",
+    "source_document": "Section_B_SDN.md",
+    "expected_chunk": "Section_B_SDN.md#chunk_q9",
+    "qtype": "synthesis"
+  },
+  {
+    "id": "sdn-022",
+    "question": "Which analogy is used to describe SDN versus a traditional network?",
+    "ground_truth": "A traditional network is compared to every car having its own GPS, where each driver independently decides their route and must figure out changes separately. SDN is compared to an air traffic control tower that directs all planes, where each plane (switch) follows instructions from the tower (controller). The controller has a global view of the whole network.",
+    "source_document": "Section_B_SDN.md",
+    "expected_chunk": "Section_B_SDN.md#chunk_q9",
+    "qtype": "factoid"
+  },
+  {
+    "id": "sdn-023",
+    "question": "What are the four types of SDN interfaces and what does each connect?",
+    "ground_truth": "The four interfaces are: Southbound Interface (SBI) connecting the controller to switches using OpenFlow, NETCONF, OVSDB, and P4Runtime; Northbound Interface (NBI) connecting the controller to applications using REST API or gRPC; East-West Interface (EBI) connecting controller to controller using protocols like ONOS Raft or ODL Akka; and Westbound Interface (WBI) connecting the controller to legacy non-SDN devices using SNMP, CLI, SSH, or NETCONF.",
+    "source_document": "Section_B_SDN.md",
+    "expected_chunk": "Section_B_SDN.md#chunk_q10",
+    "qtype": "factoid"
+  },
+  {
+    "id": "sdn-024",
+    "question": "Which protocols are commonly used on the Southbound Interface?",
+    "ground_truth": "Common Southbound Interface protocols are OpenFlow (the most popular, defines how the controller programs flow tables), NETCONF/YANG (XML-based configuration protocol with data models), OVSDB (manages Open vSwitch configuration), and P4Runtime (programs P4-programmable switches).",
+    "source_document": "Section_B_SDN.md",
+    "expected_chunk": "Section_B_SDN.md#chunk_q10",
+    "qtype": "factoid"
+  },
+  {
+    "id": "sdn-025",
+    "question": "What is the purpose of the Packet-In, Flow-Mod, and Packet-Out OpenFlow messages?",
+    "ground_truth": "Packet-In goes from switch to controller meaning 'I don't know what to do with this packet'. Flow-Mod goes from controller to switch meaning 'here's a new rule for handling such packets'. Packet-Out goes from controller to switch meaning 'send this specific packet out port X'. These three are the big-three OpenFlow messages, sometimes remembered as 'PFP'.",
+    "source_document": "Section_B_SDN.md",
+    "expected_chunk": "Section_B_SDN.md#chunk_q11",
+    "qtype": "factoid"
+  },
+  {
+    "id": "sdn-026",
+    "question": "What does the match-action pipeline in OpenFlow 1.3+ enable?",
+    "ground_truth": "OpenFlow 1.3+ supports multiple flow tables arranged in a pipeline, where a packet passes through Table 0, Table 1, Table 2, and so on. Each table can match different fields, and a match can either send the packet to the next table using goto-table or execute actions. This enables complex policies, such as matching VLAN in table 0, IP in table 1, and port in table 2.",
+    "source_document": "Section_B_SDN.md",
+    "expected_chunk": "Section_B_SDN.md#chunk_q11",
+    "qtype": "synthesis"
+  },
+  {
+    "id": "sdn-027",
+    "question": "Which SDN controller was the first ever, and which language is POX written in?",
+    "ground_truth": "NOX was the first-ever SDN controller and is written in C++. POX is written in Python and is used for rapid prototyping and education.",
+    "source_document": "Section_B_SDN.md",
+    "expected_chunk": "Section_B_SDN.md#chunk_q11",
+    "qtype": "factoid"
+  },
+  {
+    "id": "sdn-028",
+    "question": "What consensus mechanism does ONOS use, and what makes OpenDaylight model-driven?",
+    "ground_truth": "ONOS uses Raft consensus to provide high availability as a carrier-grade distributed controller. OpenDaylight is model-driven because it uses YANG data models, and it is modular and industry-backed with RESTCONF as its northbound interface.",
+    "source_document": "Section_B_SDN.md",
+    "expected_chunk": "Section_B_SDN.md#chunk_q11",
+    "qtype": "factoid"
+  },
+  {
+    "id": "sdn-029",
+    "question": "What are the four objectives in the Controller Placement Problem formulation?",
+    "ground_truth": "The four objectives are: minimize average latency (minimize the average switch-to-controller delay across all switches), minimize worst-case latency (ensure no switch is too far from its controller), load balancing (controllers should have roughly equal numbers of switches), and maximize reliability (ensure each switch can reach at least two controllers for fault tolerance).",
+    "source_document": "Section_B_SDN.md",
+    "expected_chunk": "Section_B_SDN.md#chunk_q12",
+    "qtype": "factoid"
+  },
+  {
+    "id": "sdn-030",
+    "question": "What analogy is used to explain the Controller Placement Problem?",
+    "ground_truth": "The Controller Placement Problem is compared to deciding where to place fire stations in a city. Too few stations means long response times, while too many is expensive, so you need the right number in the right locations. Similarly, you must decide how many controllers to deploy and where to place them to optimize performance.",
+    "source_document": "Section_B_SDN.md",
+    "expected_chunk": "Section_B_SDN.md#chunk_q12",
+    "qtype": "factoid"
+  },
+  {
+    "id": "sdn-031",
+    "question": "What are the five key performance metrics for SDN controllers?",
+    "ground_truth": "The five metrics are: Throughput (flow setups per second), Latency (time from Packet-In to Flow-Mod response, affecting first-packet delay for reactive flows), Scalability (max switches/flows managed), Availability (uptime percentage and failover time), and Consistency (state sync delay between clustered controllers).",
+    "source_document": "Section_B_SDN.md",
+    "expected_chunk": "Section_B_SDN.md#chunk_q13",
+    "qtype": "factoid"
+  },
+  {
+    "id": "sdn-032",
+    "question": "How does the K-Center approach differ from the K-Median approach for controller placement?",
+    "ground_truth": "K-Center minimizes the maximum distance from any switch to its controller, giving good worst-case guarantees but ignoring average performance. K-Median minimizes the total or average distance, giving good average performance but possibly bad worst-case latency.",
+    "source_document": "Section_B_SDN.md",
+    "expected_chunk": "Section_B_SDN.md#chunk_q14",
+    "qtype": "reasoning"
+  },
+  {
+    "id": "sdn-033",
+    "question": "How does Simulated Annealing work as a controller placement approach?",
+    "ground_truth": "Simulated Annealing accepts worse solutions with decreasing probability over time to escape local optima. It is simple and provides good exploration of the solution space, but its main drawback is slow convergence.",
+    "source_document": "Section_B_SDN.md",
+    "expected_chunk": "Section_B_SDN.md#chunk_q14",
+    "qtype": "synthesis"
+  },
+  {
+    "id": "sdn-034",
+    "question": "Why is switch TCAM a scalability concern in SDN?",
+    "ground_truth": "Switch TCAM (Ternary Content-Addressable Memory) is limited to roughly thousands of entries and is expensive per entry, which constrains flow table size. This is a scalability challenge because a switch can only hold a limited number of flow rules. It can be mitigated using flow aggregation with wildcard rules to match many flows with a single entry, reducing TCAM usage.",
+    "source_document": "Section_B_SDN.md",
+    "expected_chunk": "Section_B_SDN.md#chunk_q15",
+    "qtype": "reasoning"
+  },
+  {
+    "id": "sdn-035",
+    "question": "What is the load balancing metric used in controller placement?",
+    "ground_truth": "The load balancing metric minimizes the maximum ratio of load to capacity across all controllers, expressed as min max over c in C of load(c)/capacity(c). This matters because an overloaded controller becomes a bottleneck, dropping Packet-In messages and causing network failures.",
+    "source_document": "Section_B_SDN.md",
+    "expected_chunk": "Section_B_SDN.md#chunk_q16",
+    "qtype": "factoid"
+  },
+  {
+    "id": "sdn-036",
+    "question": "What inspires Particle Swarm Optimization and how do its particles move?",
+    "ground_truth": "Particle Swarm Optimization is inspired by birds flocking or fish schooling. Each particle is a placement solution that moves through the solution space guided by its personal best position and the global best position found by any particle. Over time the particles converge toward the optimal solution, and PSO is known for fast convergence.",
+    "source_document": "Section_B_SDN.md",
+    "expected_chunk": "Section_B_SDN.md#chunk_q17",
+    "qtype": "synthesis"
+  },
+  {
+    "id": "sdn-037",
+    "question": "How does Ant Colony Optimization build solutions?",
+    "ground_truth": "Ant Colony Optimization is inspired by ants finding the shortest path to food using pheromones. Ants build solutions step by step, and good solutions deposit more pheromone which attracts future ants. Over iterations the ants converge on the best placement. ACO is well suited to combinatorial problems but can be slow for large networks.",
+    "source_document": "Section_B_SDN.md",
+    "expected_chunk": "Section_B_SDN.md#chunk_q17",
+    "qtype": "synthesis"
+  },
+  {
+    "id": "sdn-038",
+    "question": "What is Microsoft's SWAN and what is Facebook's Fabric deployment?",
+    "ground_truth": "SWAN is Microsoft's SDN-based WAN used for inter-data-center traffic engineering. Fabric is Facebook's data center SDN fabric built with custom switches called Wedge.",
+    "source_document": "Section_B_SDN.md",
+    "expected_chunk": "Section_B_SDN.md#chunk_q19",
+    "qtype": "factoid"
+  },
+  {
+    "id": "sdn-039",
+    "question": "What is CORD and who is behind it?",
+    "ground_truth": "CORD stands for Central Office Re-architected as a Data Center. It is an ONOS-based deployment from ONF and AT&T that re-architects the telecom central office to function as a data center.",
+    "source_document": "Section_B_SDN.md",
+    "expected_chunk": "Section_B_SDN.md#chunk_q19",
+    "qtype": "factoid"
+  },
+  {
+    "id": "sdn-040",
+    "question": "What are some emerging research directions in SDN?",
+    "ground_truth": "Emerging research directions include AI/ML-driven SDN (self-optimizing networks, predictive traffic engineering, anomaly detection), Intent-Based Networking (expressing what you want rather than how to configure it), P4 programmable data planes (custom protocols in hardware), Digital Twin Networks (simulate before deploying), Quantum-Safe SDN (post-quantum cryptography for control channels), and Edge SDN (SDN at the network edge for IoT/MEC).",
+    "source_document": "Section_B_SDN.md",
+    "expected_chunk": "Section_B_SDN.md#chunk_q19",
+    "qtype": "factoid"
+  },
+  {
+    "id": "sdn-041",
+    "question": "In a P4 switch, what three things does the programmer define that a traditional switch cannot?",
+    "ground_truth": "With P4, the programmer defines which headers to parse, which fields to match, and what actions to perform. In traditional SDN with OpenFlow, the controller tells switches what to match and what action to take, but the switch hardware fixes which fields can be matched. P4 removes that hardware limitation by letting you program the parser and pipeline.",
+    "source_document": "Section_B_SDN.md",
+    "expected_chunk": "Section_B_SDN.md#chunk_q20",
+    "qtype": "synthesis"
+  },
+  {
+    "id": "sdn-042",
+    "question": "How does time to market compare between a fixed-function ASIC and a P4-programmable device?",
+    "ground_truth": "A fixed-function ASIC has a time to market of years because it requires a new ASIC design, whereas a P4-programmable device has a time to market of days because you only need to write a new P4 program. Both can achieve line-rate performance, but the P4 device offers full flexibility to reprogram anytime while the ASIC has none.",
+    "source_document": "Section_B_SDN.md",
+    "expected_chunk": "Section_B_SDN.md#chunk_q21",
+    "qtype": "reasoning"
+  },
+  {
+    "id": "sdn-043",
+    "question": "What are the key features of the P4_16 standard?",
+    "ground_truth": "P4_16 key features are: an architecture model that separates target-dependent and target-independent code, a strong type system for headers and metadata, extern functions that interface to target-specific features like counters, meters, and registers, and no implicit behaviors so everything must be explicitly programmed. P4_16 was released in 2016 and replaced P4_14.",
+    "source_document": "Section_B_SDN.md",
+    "expected_chunk": "Section_B_SDN.md#chunk_q22",
+    "qtype": "factoid"
+  },
+  {
+    "id": "sdn-044",
+    "question": "What is the role of the Traffic Manager in the canonical P4 pipeline?",
+    "ground_truth": "The Traffic Manager handles queuing, scheduling, replication for multicast, and buffering in the canonical P4 pipeline. It sits between the ingress and egress pipelines and is typically NOT programmable because it is target-specific.",
+    "source_document": "Section_B_SDN.md",
+    "expected_chunk": "Section_B_SDN.md#chunk_q25",
+    "qtype": "factoid"
+  },
+  {
+    "id": "sdn-045",
+    "question": "What does the Deparser do in the P4 packet processing pipeline?",
+    "ground_truth": "The Deparser reassembles the packet from the potentially modified headers and the payload at the end of the pipeline. It is the final stage after the egress pipeline, effectively reversing the work of the parser to produce the outgoing packet.",
+    "source_document": "Section_B_SDN.md",
+    "expected_chunk": "Section_B_SDN.md#chunk_q25",
+    "qtype": "factoid"
+  },
+  {
+    "id": "sdn-046",
+    "question": "What is the difference between proactive and reactive flow rule installation in SDN?",
+    "ground_truth": "Proactive flow rules are pre-installed on switches so fewer Packet-In messages go to the controller, which improves scalability. Reactive forwarding happens when a packet with no matching rule triggers a Packet-In to the controller, which then installs a rule via Flow-Mod; in reactive mode every unknown flow must reach the controller, so high controller latency causes slow first-packet forwarding.",
+    "source_document": "Section_B_SDN.md",
+    "expected_chunk": "Section_B_SDN.md#chunk_q15",
+    "qtype": "reasoning"
+  },
+  {
+    "id": "sdn-047",
+    "question": "Why does a traditional network suffer from vendor lock-in while SDN avoids it?",
+    "ground_truth": "Traditional networks suffer from vendor lock-in because each device runs proprietary firmware and vendors like Cisco and Juniper have their own proprietary CLIs, so configuration is per-device and hardware-dependent. SDN avoids this by using open standards and a vendor-neutral, programmable API, allowing commodity hardware plus software and rapid software-driven innovation.",
+    "source_document": "Section_B_SDN.md",
+    "expected_chunk": "Section_B_SDN.md#chunk_q9",
+    "qtype": "reasoning"
+  },
+  {
+    "id": "sdn-048",
+    "question": "Which metaheuristic technique is best when you must balance latency, reliability, and cost together?",
+    "ground_truth": "The Genetic Algorithm is best when you need to balance multiple objectives such as latency, reliability, and cost, because it is well suited to multi-objective optimization. Its trade-off is that it is slower and needs parameter tuning compared to simpler techniques.",
+    "source_document": "Section_B_SDN.md",
+    "expected_chunk": "Section_B_SDN.md#chunk_q17",
+    "qtype": "reasoning"
+  },
+  {
+    "id": "sdn-049",
+    "question": "What does the ingress pipeline do in the canonical P4 processing pipeline?",
+    "ground_truth": "The ingress pipeline applies match-action tables to the incoming packet, performing tasks such as routing, ACL enforcement, and QoS marking. It comes after the parser and before the traffic manager in the canonical pipeline of Parser, Ingress, Traffic Manager, Egress, and Deparser.",
+    "source_document": "Section_B_SDN.md",
+    "expected_chunk": "Section_B_SDN.md#chunk_q25",
+    "qtype": "factoid"
+  },
+  {
+    "id": "sdn-050",
+    "question": "What is a Pareto multi-objective approach to controller placement and what does it provide?",
+    "ground_truth": "A Pareto multi-objective approach finds the trade-off front between competing objectives like latency, reliability, and cost. It provides multiple choices along that front rather than a single solution, but it is complex to implement.",
+    "source_document": "Section_B_SDN.md",
+    "expected_chunk": "Section_B_SDN.md#chunk_q14",
+    "qtype": "synthesis"
   }
 ]
