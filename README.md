@@ -1,6 +1,6 @@
-# RAG Lab
+# Hybrid RAG Lab
 
-RAG Lab is a retrieval-augmented generation project for answering questions over Software-Defined Networking (SDN) study notes. It implements a practical RAG pipeline with hybrid retrieval, multi-query expansion, cross-encoder reranking, grounded answer generation, API serving, and evaluation tooling.
+Hybrid RAG Lab is a retrieval-augmented generation project for answering questions over Software-Defined Networking (SDN) study notes. It implements a practical RAG pipeline with hybrid retrieval, multi-query expansion, cross-encoder reranking, grounded answer generation, API serving, and evaluation tooling.
 
 The project is designed as a small production-style learning system rather than a notebook-only prototype. It includes a FastAPI service, a Qdrant vector database, local embedding models, Groq-hosted LLM calls, Ragas-based evaluation, regression tests, CI wiring, and a Streamlit dashboard for tracking quality over time.
 
