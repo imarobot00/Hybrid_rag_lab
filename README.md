@@ -4,6 +4,36 @@ Hybrid RAG Lab is a retrieval-augmented generation project for answering questio
 
 The project is designed as a small production-style learning system rather than a notebook-only prototype. It includes a FastAPI service, a Qdrant vector database, local embedding models, Groq-hosted LLM calls, Ragas-based evaluation, regression tests, CI wiring, and a Streamlit dashboard for tracking quality over time.
 
+## 📊 Retrieval Baseline — the number every upgrade is measured against
+
+Full six-section corpus (`Section_A`…`Section_F`, 382 chunks) in Qdrant.
+Metric: **source-level recall@k** over the 50-question SDN golden set — a
+question is a hit if at least one of the top-k retrieved results comes from the
+correct source document.
+
+# ⭐ BASELINE recall@5 = 1.00 ⭐
+
+`recall@5` saturates at **1.00** because SDN is distinctive enough that a
+relevant chunk is always somewhere in the top 5. The shallower depths carry the
+real signal and are what upgrades must beat:
+
+| Retriever | recall@1 | recall@3 | recall@5 |
+| --- | --- | --- | --- |
+| **Baseline** (flat hybrid, `notes_all`) | **0.86** | **0.96** | **1.00** |
+| Parent-document (`chunks_small` → `chunks_parent`) | 0.88 | 0.96 | 1.00 |
+
+Reproduce (Qdrant running):
+
+```bash
+uv run python scripts/ingest_all.py            # build notes_all (6 sections)
+uv run python eval/evaluate.py --retriever baseline
+uv run python scripts/parent_retriever.py      # build chunks_small + chunks_parent
+uv run python eval/evaluate.py --retriever parent
+```
+
+Per-run reports (recall at each depth, per-qtype breakdown, and miss list) are
+written to `eval/recall_results.json`.
+
 ## Features
 
 - Ingests SDN Markdown notes into Qdrant with both dense and sparse indexes.
