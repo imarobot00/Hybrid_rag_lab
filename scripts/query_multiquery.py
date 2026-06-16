@@ -98,8 +98,6 @@ def hybrid_retrieve(
         with_payload=True,      # we need payload['chunk_id'] downstream
     )
     return results.points
-    
-    
 
 
 # ── Step 2b: run hybrid retrieval for ALL queries and dedupe ──────────────────
@@ -183,6 +181,7 @@ if __name__ == "__main__":
     q = "how does an OpenFlow controller program a switch?"
 
     variants = expand_query(gc, q)
+    # print(variants)
     all_queries = [q] + variants
     print(f"Querying with {len(all_queries)} variants:")
     for v in all_queries:
