@@ -42,6 +42,12 @@ SMALL_COLLECTION = "chunks_small"
 PARENT_COLLECTION = "chunks_parent"
 BASELINE_COLLECTION = "notes_all"
 
+# LLM used by multi-query expansion and HyDE. 8b-instant has a huge token/day
+# budget (6M) so a 50-query sweep with 1-2 calls each won't exhaust the free
+# tier the way 70b-versatile (100K/day) would.
+LLM_MODEL = os.getenv("LLM_MODEL", "llama-3.1-8b-instant")
+N_VARIANTS = 3  # multi-query: paraphrases generated per question
+
 DATA_GLOB = os.path.join(os.path.dirname(__file__), "data", "Section_*.md")
 QDRANT_URL = os.getenv("QDRANT_URL", "http://localhost:6333")
 
@@ -49,6 +55,21 @@ QDRANT_URL = os.getenv("QDRANT_URL", "http://localhost:6333")
 _dense = TextEmbedding(model_name=MODEL_NAME)
 _sparse = SparseTextEmbedding(model_name=SPARSE_MODEL_NAME)
 _client = QdrantClient(url=QDRANT_URL)
+
+# Groq client is built lazily so the LLM-free retrievers (baseline / parent)
+# and the ingest step don't require GROQ_API_KEY to be set.
+_groq = None
+
+
+def _get_groq():
+    global _groq
+    if _groq is None:
+        from dotenv import load_dotenv
+        from groq import Groq
+
+        load_dotenv()
+        _groq = Groq()
+    return _groq
 
 
 # ── Token-aware splitters ───────────────────────────────────────────────────
@@ -246,6 +267,120 @@ def retrieve_with_parents(query: str, k: int = 5, search_limit: int = 20) -> lis
             }
         )
     return out
+
+
+# ── LLM-assisted retrievers: multi-query + HyDE ─────────────────────────────
+def _point_to_dict(p) -> dict:
+    return {
+        "source": p.payload.get("source", "?"),
+        "chunk_id": p.payload.get("chunk_id", -1),
+        "text": p.payload.get("text", ""),
+        "score": float(p.score),
+    }
+
+
+def _hybrid_search_dense_vec(collection: str, dense_vec, sparse_text: str, limit: int) -> list:
+    """Hybrid search where the DENSE side uses a precomputed vector (e.g. a
+    HyDE hypothetical-document embedding) while BM25 still keys off real query
+    terms (`sparse_text`)."""
+    sparse_vec = list(_sparse.embed([sparse_text]))[0]
+    res = _client.query_points(
+        collection_name=collection,
+        prefetch=[
+            models.Prefetch(query=dense_vec.tolist(), using="dense", limit=limit * 3),
+            models.Prefetch(
+                query=models.SparseVector(
+                    indices=sparse_vec.indices.tolist(),
+                    values=sparse_vec.values.tolist(),
+                ),
+                using="bm25",
+                limit=limit * 3,
+            ),
+        ],
+        query=models.FusionQuery(fusion=models.Fusion.RRF),
+        limit=limit,
+        with_payload=True,
+    )
+    return res.points
+
+
+def _pool_dedupe(point_lists: list[list], k: int) -> list[dict]:
+    """Merge several ranked lists, keeping each chunk's best score, then sort by
+    score and return the top-k as dicts."""
+    best: dict = {}
+    for points in point_lists:
+        for p in points:
+            cid = p.payload.get("chunk_id")
+            if cid not in best or p.score > best[cid].score:
+                best[cid] = p
+    ranked = sorted(best.values(), key=lambda p: p.score, reverse=True)
+    return [_point_to_dict(p) for p in ranked[:k]]
+
+
+def expand_query(question: str, n: int = N_VARIANTS) -> list[str]:
+    """Multi-query: ask the LLM for `n` paraphrases (original added by caller)."""
+    prompt = (
+        f"Generate {n} different rephrasings of the following question. "
+        f"Preserve the original meaning but use different wording. "
+        f"Output ONLY the questions, one per line, no numbering, no dashes.\n\n"
+        f"Question: {question}"
+    )
+    resp = _get_groq().chat.completions.create(
+        model=LLM_MODEL,
+        messages=[{"role": "user", "content": prompt}],
+        temperature=0.7,
+    )
+    text = resp.choices[0].message.content or ""
+    lines = [ln.strip() for ln in text.strip().split("\n") if ln.strip()]
+    return lines[:n]
+
+
+def hyde_document(question: str) -> str:
+    """HyDE: ask the LLM to write a short hypothetical answer passage. We embed
+    THAT (answer-shaped text) instead of the question, because answers sit
+    closer to the corpus chunks in embedding space than questions do."""
+    prompt = (
+        "Write a short, factual paragraph (3-4 sentences) that directly answers "
+        "the following question as if it came from technical study notes. Do not "
+        "hedge; state it plainly.\n\n"
+        f"Question: {question}"
+    )
+    resp = _get_groq().chat.completions.create(
+        model=LLM_MODEL,
+        messages=[{"role": "user", "content": prompt}],
+        temperature=0.3,
+    )
+    return (resp.choices[0].message.content or "").strip()
+
+
+def retrieve_multi_query(query: str, k: int = 5) -> list[dict]:
+    """Expand the query into N paraphrases, hybrid-search each over notes_all,
+    then pool + dedupe. Cost: 1 extra LLM call."""
+    queries = [query] + expand_query(query)
+    lists = [_hybrid_search(BASELINE_COLLECTION, q, k * 2) for q in queries]
+    return _pool_dedupe(lists, k)
+
+
+def retrieve_hyde(query: str, k: int = 5) -> list[dict]:
+    """Generate a hypothetical answer doc, embed it, hybrid-search notes_all
+    using that dense vector (+ BM25 on the original query). Cost: 1 LLM call."""
+    doc = hyde_document(query)
+    dense_vec = list(_dense.embed([doc]))[0]
+    points = _hybrid_search_dense_vec(BASELINE_COLLECTION, dense_vec, query, k)
+    return [_point_to_dict(p) for p in points]
+
+
+def retrieve_multi_query_hyde(query: str, k: int = 5) -> list[dict]:
+    """Combine both: expand into paraphrases (1 call) AND write a HyDE doc
+    (1 call). Pool the hybrid search of every paraphrase plus the HyDE-vector
+    search. Cost: 2 extra LLM calls."""
+    queries = [query] + expand_query(query)
+    lists = [_hybrid_search(BASELINE_COLLECTION, q, k * 2) for q in queries]
+
+    doc = hyde_document(query)
+    dense_vec = list(_dense.embed([doc]))[0]
+    lists.append(_hybrid_search_dense_vec(BASELINE_COLLECTION, dense_vec, query, k * 2))
+    return _pool_dedupe(lists, k)
 
 
 if __name__ == "__main__":

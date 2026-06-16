@@ -70,5 +70,3705 @@
       }
     },
     "misses": []
+  },
+  "vanilla": {
+    "retriever": "vanilla",
+    "total": 50,
+    "avg_latency_ms": 10.2,
+    "extra_llm_calls": 0,
+    "recall": {
+      "@1": 0.88,
+      "@3": 0.96,
+      "@5": 1.0
+    },
+    "hits": {
+      "@1": 44,
+      "@3": 48,
+      "@5": 50
+    },
+    "recall_at_5": 1.0,
+    "by_qtype": {
+      "factoid": {
+        "total": 26,
+        "@1": 1.0,
+        "@3": 1.0,
+        "@5": 1.0
+      },
+      "reasoning": {
+        "total": 10,
+        "@1": 0.7,
+        "@3": 0.9,
+        "@5": 1.0
+      },
+      "synthesis": {
+        "total": 14,
+        "@1": 0.7857,
+        "@3": 0.9286,
+        "@5": 1.0
+      }
+    },
+    "misses": [],
+    "per_query": [
+      {
+        "id": "sdn-001",
+        "question": "What are the three layers of SDN architecture?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_F_SDN_Security.md",
+          "Section_C_IoT_WSN.md",
+          "Section_D_SDN_5G.md"
+        ]
+      },
+      {
+        "id": "sdn-002",
+        "question": "What is the difference between the Southbound Interface and the Northbound Interface in SDN?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-003",
+        "question": "How does OpenFlow handle a packet when no matching flow rule exists in the switch?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_F_SDN_Security.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-004",
+        "question": "Why is the Controller Placement Problem (CPP) considered NP-hard?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-005",
+        "question": "What throughput can ONOS achieve compared to Ryu?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-006",
+        "question": "What are the main scalability challenges in SDN control planes?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_C_IoT_WSN.md",
+          "Section_B_SDN.md",
+          "Section_E_Network_Migration.md",
+          "Section_E_Network_Migration.md"
+        ]
+      },
+      {
+        "id": "sdn-007",
+        "question": "How does a Genetic Algorithm solve the Multi-Controller Placement Problem?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-008",
+        "question": "What is Google's B4 network and what did it achieve?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md",
+          "Section_D_SDN_5G.md"
+        ]
+      },
+      {
+        "id": "sdn-009",
+        "question": "What is P4 and how does it differ from a traditional fixed-function ASIC?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-010",
+        "question": "What are the three design goals of P4?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md"
+        ]
+      },
+      {
+        "id": "sdn-011",
+        "question": "What are the five core P4_16 language abstractions and what does each do?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-012",
+        "question": "What is the four-stage P4 development workflow?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-013",
+        "question": "What are the key differences between P4_14 and P4_16?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-014",
+        "question": "What is the East-West Interface in SDN and why is it needed?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_F_SDN_Security.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-015",
+        "question": "Why might you assign a switch to a more distant controller instead of the nearest one?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_A_Next_Generation_IP_Addressing.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-016",
+        "question": "What are the fields in an OpenFlow flow table entry?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_F_SDN_Security.md"
+        ]
+      },
+      {
+        "id": "sdn-017",
+        "question": "How does the clustering-based approach work for multi-controller placement?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md",
+          "Section_D_SDN_5G.md"
+        ]
+      },
+      {
+        "id": "sdn-018",
+        "question": "What makes ISP/Telco SDN deployment different from data center deployment?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_F_SDN_Security.md",
+          "Section_F_SDN_Security.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-019",
+        "question": "What solutions exist for SDN scalability issues?",
+        "want": "Section_B_SDN.md",
+        "hit@1": false,
+        "hit@5": true,
+        "got": [
+          "Section_E_Network_Migration.md",
+          "Section_E_Network_Migration.md",
+          "Section_E_Network_Migration.md",
+          "Section_B_SDN.md",
+          "Section_F_SDN_Security.md"
+        ]
+      },
+      {
+        "id": "sdn-020",
+        "question": "What are the two variants of latency minimization in controller placement and what do they optimize?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md"
+        ]
+      },
+      {
+        "id": "sdn-021",
+        "question": "What is the core idea that distinguishes SDN from a traditional network?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_F_SDN_Security.md"
+        ]
+      },
+      {
+        "id": "sdn-022",
+        "question": "Which analogy is used to describe SDN versus a traditional network?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_F_SDN_Security.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-023",
+        "question": "What are the four types of SDN interfaces and what does each connect?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md",
+          "Section_E_Network_Migration.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-024",
+        "question": "Which protocols are commonly used on the Southbound Interface?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_A_Next_Generation_IP_Addressing.md"
+        ]
+      },
+      {
+        "id": "sdn-025",
+        "question": "What is the purpose of the Packet-In, Flow-Mod, and Packet-Out OpenFlow messages?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_F_SDN_Security.md"
+        ]
+      },
+      {
+        "id": "sdn-026",
+        "question": "What does the match-action pipeline in OpenFlow 1.3+ enable?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-027",
+        "question": "Which SDN controller was the first ever, and which language is POX written in?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_F_SDN_Security.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-028",
+        "question": "What consensus mechanism does ONOS use, and what makes OpenDaylight model-driven?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-029",
+        "question": "What are the four objectives in the Controller Placement Problem formulation?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-030",
+        "question": "What analogy is used to explain the Controller Placement Problem?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md"
+        ]
+      },
+      {
+        "id": "sdn-031",
+        "question": "What are the five key performance metrics for SDN controllers?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md",
+          "Section_E_Network_Migration.md",
+          "Section_D_SDN_5G.md",
+          "Section_D_SDN_5G.md"
+        ]
+      },
+      {
+        "id": "sdn-032",
+        "question": "How does the K-Center approach differ from the K-Median approach for controller placement?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-033",
+        "question": "How does Simulated Annealing work as a controller placement approach?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md",
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-034",
+        "question": "Why is switch TCAM a scalability concern in SDN?",
+        "want": "Section_B_SDN.md",
+        "hit@1": false,
+        "hit@5": true,
+        "got": [
+          "Section_E_Network_Migration.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_F_SDN_Security.md",
+          "Section_E_Network_Migration.md"
+        ]
+      },
+      {
+        "id": "sdn-035",
+        "question": "What is the load balancing metric used in controller placement?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-036",
+        "question": "What inspires Particle Swarm Optimization and how do its particles move?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md",
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-037",
+        "question": "How does Ant Colony Optimization build solutions?",
+        "want": "Section_B_SDN.md",
+        "hit@1": false,
+        "hit@5": true,
+        "got": [
+          "Section_D_SDN_5G.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md"
+        ]
+      },
+      {
+        "id": "sdn-038",
+        "question": "What is Microsoft's SWAN and what is Facebook's Fabric deployment?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_C_IoT_WSN.md",
+          "Section_F_SDN_Security.md"
+        ]
+      },
+      {
+        "id": "sdn-039",
+        "question": "What is CORD and who is behind it?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_A_Next_Generation_IP_Addressing.md",
+          "Section_A_Next_Generation_IP_Addressing.md",
+          "Section_E_Network_Migration.md"
+        ]
+      },
+      {
+        "id": "sdn-040",
+        "question": "What are some emerging research directions in SDN?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_F_SDN_Security.md",
+          "Section_B_SDN.md",
+          "Section_F_SDN_Security.md",
+          "Section_E_Network_Migration.md"
+        ]
+      },
+      {
+        "id": "sdn-041",
+        "question": "In a P4 switch, what three things does the programmer define that a traditional switch cannot?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-042",
+        "question": "How does time to market compare between a fixed-function ASIC and a P4-programmable device?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-043",
+        "question": "What are the key features of the P4_16 standard?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-044",
+        "question": "What is the role of the Traffic Manager in the canonical P4 pipeline?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-045",
+        "question": "What does the Deparser do in the P4 packet processing pipeline?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-046",
+        "question": "What is the difference between proactive and reactive flow rule installation in SDN?",
+        "want": "Section_B_SDN.md",
+        "hit@1": false,
+        "hit@5": true,
+        "got": [
+          "Section_F_SDN_Security.md",
+          "Section_F_SDN_Security.md",
+          "Section_F_SDN_Security.md",
+          "Section_F_SDN_Security.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-047",
+        "question": "Why does a traditional network suffer from vendor lock-in while SDN avoids it?",
+        "want": "Section_B_SDN.md",
+        "hit@1": false,
+        "hit@5": true,
+        "got": [
+          "Section_E_Network_Migration.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md",
+          "Section_F_SDN_Security.md"
+        ]
+      },
+      {
+        "id": "sdn-048",
+        "question": "Which metaheuristic technique is best when you must balance latency, reliability, and cost together?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md"
+        ]
+      },
+      {
+        "id": "sdn-049",
+        "question": "What does the ingress pipeline do in the canonical P4 processing pipeline?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-050",
+        "question": "What is a Pareto multi-objective approach to controller placement and what does it provide?",
+        "want": "Section_B_SDN.md",
+        "hit@1": false,
+        "hit@5": true,
+        "got": [
+          "Section_D_SDN_5G.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md"
+        ]
+      }
+    ]
+  },
+  "parent_doc": {
+    "retriever": "parent_doc",
+    "total": 50,
+    "avg_latency_ms": 13.4,
+    "extra_llm_calls": 0,
+    "recall": {
+      "@1": 0.88,
+      "@3": 0.96,
+      "@5": 1.0
+    },
+    "hits": {
+      "@1": 44,
+      "@3": 48,
+      "@5": 50
+    },
+    "recall_at_5": 1.0,
+    "by_qtype": {
+      "factoid": {
+        "total": 26,
+        "@1": 0.9615,
+        "@3": 1.0,
+        "@5": 1.0
+      },
+      "reasoning": {
+        "total": 10,
+        "@1": 0.7,
+        "@3": 0.8,
+        "@5": 1.0
+      },
+      "synthesis": {
+        "total": 14,
+        "@1": 0.8571,
+        "@3": 1.0,
+        "@5": 1.0
+      }
+    },
+    "misses": [],
+    "per_query": [
+      {
+        "id": "sdn-001",
+        "question": "What are the three layers of SDN architecture?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_F_SDN_Security.md",
+          "Section_C_IoT_WSN.md",
+          "Section_D_SDN_5G.md"
+        ]
+      },
+      {
+        "id": "sdn-002",
+        "question": "What is the difference between the Southbound Interface and the Northbound Interface in SDN?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_F_SDN_Security.md",
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md"
+        ]
+      },
+      {
+        "id": "sdn-003",
+        "question": "How does OpenFlow handle a packet when no matching flow rule exists in the switch?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_F_SDN_Security.md",
+          "Section_F_SDN_Security.md"
+        ]
+      },
+      {
+        "id": "sdn-004",
+        "question": "Why is the Controller Placement Problem (CPP) considered NP-hard?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-005",
+        "question": "What throughput can ONOS achieve compared to Ryu?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md"
+        ]
+      },
+      {
+        "id": "sdn-006",
+        "question": "What are the main scalability challenges in SDN control planes?",
+        "want": "Section_B_SDN.md",
+        "hit@1": false,
+        "hit@5": true,
+        "got": [
+          "Section_C_IoT_WSN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_E_Network_Migration.md"
+        ]
+      },
+      {
+        "id": "sdn-007",
+        "question": "How does a Genetic Algorithm solve the Multi-Controller Placement Problem?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-008",
+        "question": "What is Google's B4 network and what did it achieve?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-009",
+        "question": "What is P4 and how does it differ from a traditional fixed-function ASIC?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_F_SDN_Security.md"
+        ]
+      },
+      {
+        "id": "sdn-010",
+        "question": "What are the three design goals of P4?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md",
+          "Section_E_Network_Migration.md"
+        ]
+      },
+      {
+        "id": "sdn-011",
+        "question": "What are the five core P4_16 language abstractions and what does each do?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-012",
+        "question": "What is the four-stage P4 development workflow?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-013",
+        "question": "What are the key differences between P4_14 and P4_16?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_C_IoT_WSN.md",
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md"
+        ]
+      },
+      {
+        "id": "sdn-014",
+        "question": "What is the East-West Interface in SDN and why is it needed?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_F_SDN_Security.md",
+          "Section_E_Network_Migration.md",
+          "Section_F_SDN_Security.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-015",
+        "question": "Why might you assign a switch to a more distant controller instead of the nearest one?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_A_Next_Generation_IP_Addressing.md"
+        ]
+      },
+      {
+        "id": "sdn-016",
+        "question": "What are the fields in an OpenFlow flow table entry?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_F_SDN_Security.md",
+          "Section_A_Next_Generation_IP_Addressing.md",
+          "Section_F_SDN_Security.md"
+        ]
+      },
+      {
+        "id": "sdn-017",
+        "question": "How does the clustering-based approach work for multi-controller placement?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md",
+          "Section_D_SDN_5G.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-018",
+        "question": "What makes ISP/Telco SDN deployment different from data center deployment?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_F_SDN_Security.md",
+          "Section_B_SDN.md",
+          "Section_F_SDN_Security.md",
+          "Section_E_Network_Migration.md"
+        ]
+      },
+      {
+        "id": "sdn-019",
+        "question": "What solutions exist for SDN scalability issues?",
+        "want": "Section_B_SDN.md",
+        "hit@1": false,
+        "hit@5": true,
+        "got": [
+          "Section_E_Network_Migration.md",
+          "Section_F_SDN_Security.md",
+          "Section_B_SDN.md",
+          "Section_E_Network_Migration.md",
+          "Section_E_Network_Migration.md"
+        ]
+      },
+      {
+        "id": "sdn-020",
+        "question": "What are the two variants of latency minimization in controller placement and what do they optimize?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-021",
+        "question": "What is the core idea that distinguishes SDN from a traditional network?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_F_SDN_Security.md",
+          "Section_E_Network_Migration.md",
+          "Section_F_SDN_Security.md",
+          "Section_D_SDN_5G.md"
+        ]
+      },
+      {
+        "id": "sdn-022",
+        "question": "Which analogy is used to describe SDN versus a traditional network?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_F_SDN_Security.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_F_SDN_Security.md"
+        ]
+      },
+      {
+        "id": "sdn-023",
+        "question": "What are the four types of SDN interfaces and what does each connect?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md",
+          "Section_E_Network_Migration.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-024",
+        "question": "Which protocols are commonly used on the Southbound Interface?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_F_SDN_Security.md",
+          "Section_A_Next_Generation_IP_Addressing.md",
+          "Section_A_Next_Generation_IP_Addressing.md"
+        ]
+      },
+      {
+        "id": "sdn-025",
+        "question": "What is the purpose of the Packet-In, Flow-Mod, and Packet-Out OpenFlow messages?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_A_Next_Generation_IP_Addressing.md",
+          "Section_A_Next_Generation_IP_Addressing.md"
+        ]
+      },
+      {
+        "id": "sdn-026",
+        "question": "What does the match-action pipeline in OpenFlow 1.3+ enable?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-027",
+        "question": "Which SDN controller was the first ever, and which language is POX written in?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_E_Network_Migration.md"
+        ]
+      },
+      {
+        "id": "sdn-028",
+        "question": "What consensus mechanism does ONOS use, and what makes OpenDaylight model-driven?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_C_IoT_WSN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-029",
+        "question": "What are the four objectives in the Controller Placement Problem formulation?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md"
+        ]
+      },
+      {
+        "id": "sdn-030",
+        "question": "What analogy is used to explain the Controller Placement Problem?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-031",
+        "question": "What are the five key performance metrics for SDN controllers?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md"
+        ]
+      },
+      {
+        "id": "sdn-032",
+        "question": "How does the K-Center approach differ from the K-Median approach for controller placement?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-033",
+        "question": "How does Simulated Annealing work as a controller placement approach?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md",
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-034",
+        "question": "Why is switch TCAM a scalability concern in SDN?",
+        "want": "Section_B_SDN.md",
+        "hit@1": false,
+        "hit@5": true,
+        "got": [
+          "Section_E_Network_Migration.md",
+          "Section_E_Network_Migration.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-035",
+        "question": "What is the load balancing metric used in controller placement?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md",
+          "Section_F_SDN_Security.md"
+        ]
+      },
+      {
+        "id": "sdn-036",
+        "question": "What inspires Particle Swarm Optimization and how do its particles move?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md",
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md"
+        ]
+      },
+      {
+        "id": "sdn-037",
+        "question": "How does Ant Colony Optimization build solutions?",
+        "want": "Section_B_SDN.md",
+        "hit@1": false,
+        "hit@5": true,
+        "got": [
+          "Section_D_SDN_5G.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md"
+        ]
+      },
+      {
+        "id": "sdn-038",
+        "question": "What is Microsoft's SWAN and what is Facebook's Fabric deployment?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_C_IoT_WSN.md",
+          "Section_B_SDN.md",
+          "Section_F_SDN_Security.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-039",
+        "question": "What is CORD and who is behind it?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_A_Next_Generation_IP_Addressing.md",
+          "Section_B_SDN.md",
+          "Section_E_Network_Migration.md"
+        ]
+      },
+      {
+        "id": "sdn-040",
+        "question": "What are some emerging research directions in SDN?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_E_Network_Migration.md",
+          "Section_B_SDN.md",
+          "Section_F_SDN_Security.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-041",
+        "question": "In a P4 switch, what three things does the programmer define that a traditional switch cannot?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-042",
+        "question": "How does time to market compare between a fixed-function ASIC and a P4-programmable device?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md"
+        ]
+      },
+      {
+        "id": "sdn-043",
+        "question": "What are the key features of the P4_16 standard?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_E_Network_Migration.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-044",
+        "question": "What is the role of the Traffic Manager in the canonical P4 pipeline?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_A_Next_Generation_IP_Addressing.md",
+          "Section_A_Next_Generation_IP_Addressing.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-045",
+        "question": "What does the Deparser do in the P4 packet processing pipeline?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_A_Next_Generation_IP_Addressing.md"
+        ]
+      },
+      {
+        "id": "sdn-046",
+        "question": "What is the difference between proactive and reactive flow rule installation in SDN?",
+        "want": "Section_B_SDN.md",
+        "hit@1": false,
+        "hit@5": true,
+        "got": [
+          "Section_F_SDN_Security.md",
+          "Section_F_SDN_Security.md",
+          "Section_F_SDN_Security.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-047",
+        "question": "Why does a traditional network suffer from vendor lock-in while SDN avoids it?",
+        "want": "Section_B_SDN.md",
+        "hit@1": false,
+        "hit@5": true,
+        "got": [
+          "Section_E_Network_Migration.md",
+          "Section_D_SDN_5G.md",
+          "Section_E_Network_Migration.md",
+          "Section_B_SDN.md",
+          "Section_F_SDN_Security.md"
+        ]
+      },
+      {
+        "id": "sdn-048",
+        "question": "Which metaheuristic technique is best when you must balance latency, reliability, and cost together?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md"
+        ]
+      },
+      {
+        "id": "sdn-049",
+        "question": "What does the ingress pipeline do in the canonical P4 processing pipeline?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_F_SDN_Security.md"
+        ]
+      },
+      {
+        "id": "sdn-050",
+        "question": "What is a Pareto multi-objective approach to controller placement and what does it provide?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      }
+    ]
+  },
+  "multi_query": {
+    "retriever": "multi_query",
+    "total": 50,
+    "avg_latency_ms": 1285.9,
+    "extra_llm_calls": 1,
+    "recall": {
+      "@1": 0.9,
+      "@3": 0.98,
+      "@5": 1.0
+    },
+    "hits": {
+      "@1": 45,
+      "@3": 49,
+      "@5": 50
+    },
+    "recall_at_5": 1.0,
+    "by_qtype": {
+      "factoid": {
+        "total": 26,
+        "@1": 0.9615,
+        "@3": 1.0,
+        "@5": 1.0
+      },
+      "reasoning": {
+        "total": 10,
+        "@1": 0.8,
+        "@3": 0.9,
+        "@5": 1.0
+      },
+      "synthesis": {
+        "total": 14,
+        "@1": 0.8571,
+        "@3": 1.0,
+        "@5": 1.0
+      }
+    },
+    "misses": [],
+    "per_query": [
+      {
+        "id": "sdn-001",
+        "question": "What are the three layers of SDN architecture?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_E_Network_Migration.md",
+          "Section_D_SDN_5G.md"
+        ]
+      },
+      {
+        "id": "sdn-002",
+        "question": "What is the difference between the Southbound Interface and the Northbound Interface in SDN?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_E_Network_Migration.md"
+        ]
+      },
+      {
+        "id": "sdn-003",
+        "question": "How does OpenFlow handle a packet when no matching flow rule exists in the switch?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_F_SDN_Security.md"
+        ]
+      },
+      {
+        "id": "sdn-004",
+        "question": "Why is the Controller Placement Problem (CPP) considered NP-hard?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-005",
+        "question": "What throughput can ONOS achieve compared to Ryu?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-006",
+        "question": "What are the main scalability challenges in SDN control planes?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_C_IoT_WSN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_E_Network_Migration.md"
+        ]
+      },
+      {
+        "id": "sdn-007",
+        "question": "How does a Genetic Algorithm solve the Multi-Controller Placement Problem?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md"
+        ]
+      },
+      {
+        "id": "sdn-008",
+        "question": "What is Google's B4 network and what did it achieve?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md",
+          "Section_D_SDN_5G.md"
+        ]
+      },
+      {
+        "id": "sdn-009",
+        "question": "What is P4 and how does it differ from a traditional fixed-function ASIC?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-010",
+        "question": "What are the three design goals of P4?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-011",
+        "question": "What are the five core P4_16 language abstractions and what does each do?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-012",
+        "question": "What is the four-stage P4 development workflow?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-013",
+        "question": "What are the key differences between P4_14 and P4_16?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-014",
+        "question": "What is the East-West Interface in SDN and why is it needed?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_F_SDN_Security.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-015",
+        "question": "Why might you assign a switch to a more distant controller instead of the nearest one?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_F_SDN_Security.md",
+          "Section_B_SDN.md",
+          "Section_F_SDN_Security.md",
+          "Section_D_SDN_5G.md"
+        ]
+      },
+      {
+        "id": "sdn-016",
+        "question": "What are the fields in an OpenFlow flow table entry?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_A_Next_Generation_IP_Addressing.md"
+        ]
+      },
+      {
+        "id": "sdn-017",
+        "question": "How does the clustering-based approach work for multi-controller placement?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-018",
+        "question": "What makes ISP/Telco SDN deployment different from data center deployment?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_F_SDN_Security.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_F_SDN_Security.md"
+        ]
+      },
+      {
+        "id": "sdn-019",
+        "question": "What solutions exist for SDN scalability issues?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_E_Network_Migration.md",
+          "Section_B_SDN.md",
+          "Section_E_Network_Migration.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-020",
+        "question": "What are the two variants of latency minimization in controller placement and what do they optimize?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-021",
+        "question": "What is the core idea that distinguishes SDN from a traditional network?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_E_Network_Migration.md",
+          "Section_E_Network_Migration.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-022",
+        "question": "Which analogy is used to describe SDN versus a traditional network?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_E_Network_Migration.md",
+          "Section_E_Network_Migration.md"
+        ]
+      },
+      {
+        "id": "sdn-023",
+        "question": "What are the four types of SDN interfaces and what does each connect?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_A_Next_Generation_IP_Addressing.md",
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md",
+          "Section_C_IoT_WSN.md"
+        ]
+      },
+      {
+        "id": "sdn-024",
+        "question": "Which protocols are commonly used on the Southbound Interface?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-025",
+        "question": "What is the purpose of the Packet-In, Flow-Mod, and Packet-Out OpenFlow messages?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_F_SDN_Security.md"
+        ]
+      },
+      {
+        "id": "sdn-026",
+        "question": "What does the match-action pipeline in OpenFlow 1.3+ enable?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-027",
+        "question": "Which SDN controller was the first ever, and which language is POX written in?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_E_Network_Migration.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-028",
+        "question": "What consensus mechanism does ONOS use, and what makes OpenDaylight model-driven?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-029",
+        "question": "What are the four objectives in the Controller Placement Problem formulation?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md"
+        ]
+      },
+      {
+        "id": "sdn-030",
+        "question": "What analogy is used to explain the Controller Placement Problem?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-031",
+        "question": "What are the five key performance metrics for SDN controllers?",
+        "want": "Section_B_SDN.md",
+        "hit@1": false,
+        "hit@5": true,
+        "got": [
+          "Section_D_SDN_5G.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-032",
+        "question": "How does the K-Center approach differ from the K-Median approach for controller placement?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md"
+        ]
+      },
+      {
+        "id": "sdn-033",
+        "question": "How does Simulated Annealing work as a controller placement approach?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md",
+          "Section_D_SDN_5G.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-034",
+        "question": "Why is switch TCAM a scalability concern in SDN?",
+        "want": "Section_B_SDN.md",
+        "hit@1": false,
+        "hit@5": true,
+        "got": [
+          "Section_E_Network_Migration.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_F_SDN_Security.md"
+        ]
+      },
+      {
+        "id": "sdn-035",
+        "question": "What is the load balancing metric used in controller placement?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-036",
+        "question": "What inspires Particle Swarm Optimization and how do its particles move?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md",
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-037",
+        "question": "How does Ant Colony Optimization build solutions?",
+        "want": "Section_B_SDN.md",
+        "hit@1": false,
+        "hit@5": true,
+        "got": [
+          "Section_D_SDN_5G.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md"
+        ]
+      },
+      {
+        "id": "sdn-038",
+        "question": "What is Microsoft's SWAN and what is Facebook's Fabric deployment?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_F_SDN_Security.md",
+          "Section_F_SDN_Security.md"
+        ]
+      },
+      {
+        "id": "sdn-039",
+        "question": "What is CORD and who is behind it?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_C_IoT_WSN.md",
+          "Section_C_IoT_WSN.md",
+          "Section_A_Next_Generation_IP_Addressing.md"
+        ]
+      },
+      {
+        "id": "sdn-040",
+        "question": "What are some emerging research directions in SDN?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_F_SDN_Security.md",
+          "Section_E_Network_Migration.md",
+          "Section_B_SDN.md",
+          "Section_F_SDN_Security.md"
+        ]
+      },
+      {
+        "id": "sdn-041",
+        "question": "In a P4 switch, what three things does the programmer define that a traditional switch cannot?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md"
+        ]
+      },
+      {
+        "id": "sdn-042",
+        "question": "How does time to market compare between a fixed-function ASIC and a P4-programmable device?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-043",
+        "question": "What are the key features of the P4_16 standard?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-044",
+        "question": "What is the role of the Traffic Manager in the canonical P4 pipeline?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-045",
+        "question": "What does the Deparser do in the P4 packet processing pipeline?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-046",
+        "question": "What is the difference between proactive and reactive flow rule installation in SDN?",
+        "want": "Section_B_SDN.md",
+        "hit@1": false,
+        "hit@5": true,
+        "got": [
+          "Section_F_SDN_Security.md",
+          "Section_F_SDN_Security.md",
+          "Section_F_SDN_Security.md",
+          "Section_F_SDN_Security.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-047",
+        "question": "Why does a traditional network suffer from vendor lock-in while SDN avoids it?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_E_Network_Migration.md",
+          "Section_D_SDN_5G.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-048",
+        "question": "Which metaheuristic technique is best when you must balance latency, reliability, and cost together?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md",
+          "Section_D_SDN_5G.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-049",
+        "question": "What does the ingress pipeline do in the canonical P4 processing pipeline?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-050",
+        "question": "What is a Pareto multi-objective approach to controller placement and what does it provide?",
+        "want": "Section_B_SDN.md",
+        "hit@1": false,
+        "hit@5": true,
+        "got": [
+          "Section_D_SDN_5G.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md",
+          "Section_B_SDN.md"
+        ]
+      }
+    ]
+  },
+  "hyde": {
+    "retriever": "hyde",
+    "total": 50,
+    "avg_latency_ms": 2641.9,
+    "extra_llm_calls": 1,
+    "recall": {
+      "@1": 0.92,
+      "@3": 0.98,
+      "@5": 1.0
+    },
+    "hits": {
+      "@1": 46,
+      "@3": 49,
+      "@5": 50
+    },
+    "recall_at_5": 1.0,
+    "by_qtype": {
+      "factoid": {
+        "total": 26,
+        "@1": 1.0,
+        "@3": 1.0,
+        "@5": 1.0
+      },
+      "reasoning": {
+        "total": 10,
+        "@1": 0.8,
+        "@3": 0.9,
+        "@5": 1.0
+      },
+      "synthesis": {
+        "total": 14,
+        "@1": 0.8571,
+        "@3": 1.0,
+        "@5": 1.0
+      }
+    },
+    "misses": [],
+    "per_query": [
+      {
+        "id": "sdn-001",
+        "question": "What are the three layers of SDN architecture?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_C_IoT_WSN.md",
+          "Section_F_SDN_Security.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-002",
+        "question": "What is the difference between the Southbound Interface and the Northbound Interface in SDN?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_F_SDN_Security.md"
+        ]
+      },
+      {
+        "id": "sdn-003",
+        "question": "How does OpenFlow handle a packet when no matching flow rule exists in the switch?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-004",
+        "question": "Why is the Controller Placement Problem (CPP) considered NP-hard?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md"
+        ]
+      },
+      {
+        "id": "sdn-005",
+        "question": "What throughput can ONOS achieve compared to Ryu?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-006",
+        "question": "What are the main scalability challenges in SDN control planes?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_C_IoT_WSN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_E_Network_Migration.md"
+        ]
+      },
+      {
+        "id": "sdn-007",
+        "question": "How does a Genetic Algorithm solve the Multi-Controller Placement Problem?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-008",
+        "question": "What is Google's B4 network and what did it achieve?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md",
+          "Section_D_SDN_5G.md"
+        ]
+      },
+      {
+        "id": "sdn-009",
+        "question": "What is P4 and how does it differ from a traditional fixed-function ASIC?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-010",
+        "question": "What are the three design goals of P4?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-011",
+        "question": "What are the five core P4_16 language abstractions and what does each do?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-012",
+        "question": "What is the four-stage P4 development workflow?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-013",
+        "question": "What are the key differences between P4_14 and P4_16?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-014",
+        "question": "What is the East-West Interface in SDN and why is it needed?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_F_SDN_Security.md",
+          "Section_B_SDN.md",
+          "Section_F_SDN_Security.md"
+        ]
+      },
+      {
+        "id": "sdn-015",
+        "question": "Why might you assign a switch to a more distant controller instead of the nearest one?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md",
+          "Section_A_Next_Generation_IP_Addressing.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-016",
+        "question": "What are the fields in an OpenFlow flow table entry?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_F_SDN_Security.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-017",
+        "question": "How does the clustering-based approach work for multi-controller placement?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md",
+          "Section_D_SDN_5G.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-018",
+        "question": "What makes ISP/Telco SDN deployment different from data center deployment?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_F_SDN_Security.md",
+          "Section_F_SDN_Security.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-019",
+        "question": "What solutions exist for SDN scalability issues?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_E_Network_Migration.md",
+          "Section_D_SDN_5G.md",
+          "Section_F_SDN_Security.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-020",
+        "question": "What are the two variants of latency minimization in controller placement and what do they optimize?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md"
+        ]
+      },
+      {
+        "id": "sdn-021",
+        "question": "What is the core idea that distinguishes SDN from a traditional network?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_F_SDN_Security.md"
+        ]
+      },
+      {
+        "id": "sdn-022",
+        "question": "Which analogy is used to describe SDN versus a traditional network?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_F_SDN_Security.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-023",
+        "question": "What are the four types of SDN interfaces and what does each connect?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-024",
+        "question": "Which protocols are commonly used on the Southbound Interface?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-025",
+        "question": "What is the purpose of the Packet-In, Flow-Mod, and Packet-Out OpenFlow messages?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_A_Next_Generation_IP_Addressing.md",
+          "Section_F_SDN_Security.md"
+        ]
+      },
+      {
+        "id": "sdn-026",
+        "question": "What does the match-action pipeline in OpenFlow 1.3+ enable?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-027",
+        "question": "Which SDN controller was the first ever, and which language is POX written in?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_E_Network_Migration.md"
+        ]
+      },
+      {
+        "id": "sdn-028",
+        "question": "What consensus mechanism does ONOS use, and what makes OpenDaylight model-driven?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-029",
+        "question": "What are the four objectives in the Controller Placement Problem formulation?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-030",
+        "question": "What analogy is used to explain the Controller Placement Problem?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-031",
+        "question": "What are the five key performance metrics for SDN controllers?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md",
+          "Section_D_SDN_5G.md"
+        ]
+      },
+      {
+        "id": "sdn-032",
+        "question": "How does the K-Center approach differ from the K-Median approach for controller placement?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-033",
+        "question": "How does Simulated Annealing work as a controller placement approach?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md",
+          "Section_D_SDN_5G.md",
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md"
+        ]
+      },
+      {
+        "id": "sdn-034",
+        "question": "Why is switch TCAM a scalability concern in SDN?",
+        "want": "Section_B_SDN.md",
+        "hit@1": false,
+        "hit@5": true,
+        "got": [
+          "Section_E_Network_Migration.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_E_Network_Migration.md",
+          "Section_F_SDN_Security.md"
+        ]
+      },
+      {
+        "id": "sdn-035",
+        "question": "What is the load balancing metric used in controller placement?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-036",
+        "question": "What inspires Particle Swarm Optimization and how do its particles move?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md",
+          "Section_D_SDN_5G.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-037",
+        "question": "How does Ant Colony Optimization build solutions?",
+        "want": "Section_B_SDN.md",
+        "hit@1": false,
+        "hit@5": true,
+        "got": [
+          "Section_D_SDN_5G.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md"
+        ]
+      },
+      {
+        "id": "sdn-038",
+        "question": "What is Microsoft's SWAN and what is Facebook's Fabric deployment?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_C_IoT_WSN.md",
+          "Section_D_SDN_5G.md"
+        ]
+      },
+      {
+        "id": "sdn-039",
+        "question": "What is CORD and who is behind it?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_A_Next_Generation_IP_Addressing.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-040",
+        "question": "What are some emerging research directions in SDN?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_F_SDN_Security.md",
+          "Section_D_SDN_5G.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-041",
+        "question": "In a P4 switch, what three things does the programmer define that a traditional switch cannot?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-042",
+        "question": "How does time to market compare between a fixed-function ASIC and a P4-programmable device?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-043",
+        "question": "What are the key features of the P4_16 standard?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-044",
+        "question": "What is the role of the Traffic Manager in the canonical P4 pipeline?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-045",
+        "question": "What does the Deparser do in the P4 packet processing pipeline?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-046",
+        "question": "What is the difference between proactive and reactive flow rule installation in SDN?",
+        "want": "Section_B_SDN.md",
+        "hit@1": false,
+        "hit@5": true,
+        "got": [
+          "Section_F_SDN_Security.md",
+          "Section_F_SDN_Security.md",
+          "Section_F_SDN_Security.md",
+          "Section_B_SDN.md",
+          "Section_F_SDN_Security.md"
+        ]
+      },
+      {
+        "id": "sdn-047",
+        "question": "Why does a traditional network suffer from vendor lock-in while SDN avoids it?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_E_Network_Migration.md",
+          "Section_D_SDN_5G.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-048",
+        "question": "Which metaheuristic technique is best when you must balance latency, reliability, and cost together?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md",
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md"
+        ]
+      },
+      {
+        "id": "sdn-049",
+        "question": "What does the ingress pipeline do in the canonical P4 processing pipeline?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-050",
+        "question": "What is a Pareto multi-objective approach to controller placement and what does it provide?",
+        "want": "Section_B_SDN.md",
+        "hit@1": false,
+        "hit@5": true,
+        "got": [
+          "Section_D_SDN_5G.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      }
+    ]
+  },
+  "multi_query+hyde": {
+    "retriever": "multi_query+hyde",
+    "total": 50,
+    "avg_latency_ms": 5226.3,
+    "extra_llm_calls": 2,
+    "recall": {
+      "@1": 0.9,
+      "@3": 0.98,
+      "@5": 1.0
+    },
+    "hits": {
+      "@1": 45,
+      "@3": 49,
+      "@5": 50
+    },
+    "recall_at_5": 1.0,
+    "by_qtype": {
+      "factoid": {
+        "total": 26,
+        "@1": 1.0,
+        "@3": 1.0,
+        "@5": 1.0
+      },
+      "reasoning": {
+        "total": 10,
+        "@1": 0.8,
+        "@3": 0.9,
+        "@5": 1.0
+      },
+      "synthesis": {
+        "total": 14,
+        "@1": 0.7857,
+        "@3": 1.0,
+        "@5": 1.0
+      }
+    },
+    "misses": [],
+    "per_query": [
+      {
+        "id": "sdn-001",
+        "question": "What are the three layers of SDN architecture?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_E_Network_Migration.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-002",
+        "question": "What is the difference between the Southbound Interface and the Northbound Interface in SDN?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-003",
+        "question": "How does OpenFlow handle a packet when no matching flow rule exists in the switch?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-004",
+        "question": "Why is the Controller Placement Problem (CPP) considered NP-hard?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md"
+        ]
+      },
+      {
+        "id": "sdn-005",
+        "question": "What throughput can ONOS achieve compared to Ryu?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_A_Next_Generation_IP_Addressing.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-006",
+        "question": "What are the main scalability challenges in SDN control planes?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_C_IoT_WSN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-007",
+        "question": "How does a Genetic Algorithm solve the Multi-Controller Placement Problem?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-008",
+        "question": "What is Google's B4 network and what did it achieve?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md",
+          "Section_D_SDN_5G.md"
+        ]
+      },
+      {
+        "id": "sdn-009",
+        "question": "What is P4 and how does it differ from a traditional fixed-function ASIC?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-010",
+        "question": "What are the three design goals of P4?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-011",
+        "question": "What are the five core P4_16 language abstractions and what does each do?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_C_IoT_WSN.md"
+        ]
+      },
+      {
+        "id": "sdn-012",
+        "question": "What is the four-stage P4 development workflow?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-013",
+        "question": "What are the key differences between P4_14 and P4_16?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-014",
+        "question": "What is the East-West Interface in SDN and why is it needed?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_E_Network_Migration.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-015",
+        "question": "Why might you assign a switch to a more distant controller instead of the nearest one?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_F_SDN_Security.md",
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-016",
+        "question": "What are the fields in an OpenFlow flow table entry?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_F_SDN_Security.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-017",
+        "question": "How does the clustering-based approach work for multi-controller placement?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_C_IoT_WSN.md",
+          "Section_D_SDN_5G.md"
+        ]
+      },
+      {
+        "id": "sdn-018",
+        "question": "What makes ISP/Telco SDN deployment different from data center deployment?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_F_SDN_Security.md",
+          "Section_B_SDN.md",
+          "Section_F_SDN_Security.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-019",
+        "question": "What solutions exist for SDN scalability issues?",
+        "want": "Section_B_SDN.md",
+        "hit@1": false,
+        "hit@5": true,
+        "got": [
+          "Section_E_Network_Migration.md",
+          "Section_B_SDN.md",
+          "Section_E_Network_Migration.md",
+          "Section_E_Network_Migration.md",
+          "Section_E_Network_Migration.md"
+        ]
+      },
+      {
+        "id": "sdn-020",
+        "question": "What are the two variants of latency minimization in controller placement and what do they optimize?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md"
+        ]
+      },
+      {
+        "id": "sdn-021",
+        "question": "What is the core idea that distinguishes SDN from a traditional network?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-022",
+        "question": "Which analogy is used to describe SDN versus a traditional network?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_F_SDN_Security.md",
+          "Section_E_Network_Migration.md"
+        ]
+      },
+      {
+        "id": "sdn-023",
+        "question": "What are the four types of SDN interfaces and what does each connect?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_F_SDN_Security.md",
+          "Section_C_IoT_WSN.md",
+          "Section_D_SDN_5G.md"
+        ]
+      },
+      {
+        "id": "sdn-024",
+        "question": "Which protocols are commonly used on the Southbound Interface?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_A_Next_Generation_IP_Addressing.md"
+        ]
+      },
+      {
+        "id": "sdn-025",
+        "question": "What is the purpose of the Packet-In, Flow-Mod, and Packet-Out OpenFlow messages?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_A_Next_Generation_IP_Addressing.md"
+        ]
+      },
+      {
+        "id": "sdn-026",
+        "question": "What does the match-action pipeline in OpenFlow 1.3+ enable?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-027",
+        "question": "Which SDN controller was the first ever, and which language is POX written in?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-028",
+        "question": "What consensus mechanism does ONOS use, and what makes OpenDaylight model-driven?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-029",
+        "question": "What are the four objectives in the Controller Placement Problem formulation?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-030",
+        "question": "What analogy is used to explain the Controller Placement Problem?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md",
+          "Section_D_SDN_5G.md"
+        ]
+      },
+      {
+        "id": "sdn-031",
+        "question": "What are the five key performance metrics for SDN controllers?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_E_Network_Migration.md",
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md",
+          "Section_D_SDN_5G.md"
+        ]
+      },
+      {
+        "id": "sdn-032",
+        "question": "How does the K-Center approach differ from the K-Median approach for controller placement?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md"
+        ]
+      },
+      {
+        "id": "sdn-033",
+        "question": "How does Simulated Annealing work as a controller placement approach?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md",
+          "Section_D_SDN_5G.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-034",
+        "question": "Why is switch TCAM a scalability concern in SDN?",
+        "want": "Section_B_SDN.md",
+        "hit@1": false,
+        "hit@5": true,
+        "got": [
+          "Section_E_Network_Migration.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_F_SDN_Security.md"
+        ]
+      },
+      {
+        "id": "sdn-035",
+        "question": "What is the load balancing metric used in controller placement?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-036",
+        "question": "What inspires Particle Swarm Optimization and how do its particles move?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md",
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md",
+          "Section_D_SDN_5G.md"
+        ]
+      },
+      {
+        "id": "sdn-037",
+        "question": "How does Ant Colony Optimization build solutions?",
+        "want": "Section_B_SDN.md",
+        "hit@1": false,
+        "hit@5": true,
+        "got": [
+          "Section_D_SDN_5G.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md"
+        ]
+      },
+      {
+        "id": "sdn-038",
+        "question": "What is Microsoft's SWAN and what is Facebook's Fabric deployment?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_C_IoT_WSN.md",
+          "Section_E_Network_Migration.md"
+        ]
+      },
+      {
+        "id": "sdn-039",
+        "question": "What is CORD and who is behind it?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_A_Next_Generation_IP_Addressing.md",
+          "Section_B_SDN.md",
+          "Section_A_Next_Generation_IP_Addressing.md",
+          "Section_C_IoT_WSN.md"
+        ]
+      },
+      {
+        "id": "sdn-040",
+        "question": "What are some emerging research directions in SDN?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_F_SDN_Security.md",
+          "Section_B_SDN.md",
+          "Section_E_Network_Migration.md"
+        ]
+      },
+      {
+        "id": "sdn-041",
+        "question": "In a P4 switch, what three things does the programmer define that a traditional switch cannot?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-042",
+        "question": "How does time to market compare between a fixed-function ASIC and a P4-programmable device?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-043",
+        "question": "What are the key features of the P4_16 standard?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-044",
+        "question": "What is the role of the Traffic Manager in the canonical P4 pipeline?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-045",
+        "question": "What does the Deparser do in the P4 packet processing pipeline?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-046",
+        "question": "What is the difference between proactive and reactive flow rule installation in SDN?",
+        "want": "Section_B_SDN.md",
+        "hit@1": false,
+        "hit@5": true,
+        "got": [
+          "Section_F_SDN_Security.md",
+          "Section_F_SDN_Security.md",
+          "Section_F_SDN_Security.md",
+          "Section_B_SDN.md",
+          "Section_F_SDN_Security.md"
+        ]
+      },
+      {
+        "id": "sdn-047",
+        "question": "Why does a traditional network suffer from vendor lock-in while SDN avoids it?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_E_Network_Migration.md",
+          "Section_B_SDN.md",
+          "Section_F_SDN_Security.md",
+          "Section_D_SDN_5G.md"
+        ]
+      },
+      {
+        "id": "sdn-048",
+        "question": "Which metaheuristic technique is best when you must balance latency, reliability, and cost together?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md",
+          "Section_B_SDN.md",
+          "Section_D_SDN_5G.md"
+        ]
+      },
+      {
+        "id": "sdn-049",
+        "question": "What does the ingress pipeline do in the canonical P4 processing pipeline?",
+        "want": "Section_B_SDN.md",
+        "hit@1": true,
+        "hit@5": true,
+        "got": [
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      },
+      {
+        "id": "sdn-050",
+        "question": "What is a Pareto multi-objective approach to controller placement and what does it provide?",
+        "want": "Section_B_SDN.md",
+        "hit@1": false,
+        "hit@5": true,
+        "got": [
+          "Section_D_SDN_5G.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md",
+          "Section_B_SDN.md"
+        ]
+      }
+    ]
   }
 }
