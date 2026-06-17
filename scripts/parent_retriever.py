@@ -189,13 +189,13 @@ def build() -> None:
 
 
 # ── Query-time helpers (imported by eval/evaluate.py) ───────────────────────
-def _hybrid_search(collection: str, query: str, limit: int) -> list:
+def _hybrid_search(collection: str, query: str, limit: int, query_filter=None) -> list:
     dense_vec = list(_dense.embed([query]))[0]
     sparse_vec = list(_sparse.embed([query]))[0]
     res = _client.query_points(
         collection_name=collection,
         prefetch=[
-            models.Prefetch(query=dense_vec.tolist(), using="dense", limit=limit * 3),
+            models.Prefetch(query=dense_vec.tolist(), using="dense", limit=limit * 3, filter=query_filter),
             models.Prefetch(
                 query=models.SparseVector(
                     indices=sparse_vec.indices.tolist(),
@@ -203,6 +203,7 @@ def _hybrid_search(collection: str, query: str, limit: int) -> list:
                 ),
                 using="bm25",
                 limit=limit * 3,
+                filter=query_filter,
             ),
         ],
         query=models.FusionQuery(fusion=models.Fusion.RRF),
@@ -212,9 +213,9 @@ def _hybrid_search(collection: str, query: str, limit: int) -> list:
     return res.points
 
 
-def retrieve_baseline(query: str, k: int = 5) -> list[dict]:
+def retrieve_baseline(query: str, k: int = 5, query_filter=None) -> list[dict]:
     """Flat hybrid retrieval over `notes_all` — returns top-k chunks."""
-    points = _hybrid_search(BASELINE_COLLECTION, query, k)
+    points = _hybrid_search(BASELINE_COLLECTION, query, k, query_filter)
     return [
         {
             "source": p.payload.get("source", "?"),
@@ -226,13 +227,13 @@ def retrieve_baseline(query: str, k: int = 5) -> list[dict]:
     ]
 
 
-def retrieve_with_parents(query: str, k: int = 5, search_limit: int = 20) -> list[dict]:
+def retrieve_with_parents(query: str, k: int = 5, search_limit: int = 20, query_filter=None) -> list[dict]:
     """Parent-document retrieval.
 
     Search small chunks, collect distinct parent ids in rank order, then fetch
     and return the top-k parent documents.
     """
-    hits = _hybrid_search(SMALL_COLLECTION, query, search_limit)
+    hits = _hybrid_search(SMALL_COLLECTION, query, search_limit, query_filter)
 
     ordered_parents: list[int] = []
     seen: set[int] = set()
@@ -268,6 +269,13 @@ def retrieve_with_parents(query: str, k: int = 5, search_limit: int = 20) -> lis
         )
     return out
 
+def section_filter(section: str):
+    """Build a Qdrant filter that keeps only chunks tagged section=<section>."""
+    return models.Filter(
+        must=[models.FieldCondition(
+            key="section", match=models.MatchValue(value=section)
+        )]
+    )
 
 # ── LLM-assisted retrievers: multi-query + HyDE ─────────────────────────────
 def _point_to_dict(p) -> dict:
