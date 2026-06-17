@@ -25,6 +25,7 @@ from __future__ import annotations
 import glob
 import os
 import time
+import hashlib
 
 from fastembed import SparseTextEmbedding, TextEmbedding
 from langchain_text_splitters import RecursiveCharacterTextSplitter
@@ -360,6 +361,53 @@ def hyde_document(question: str) -> str:
     )
     return (resp.choices[0].message.content or "").strip()
 
+# ── Contextual compression ──────────────────────────────────────────────────
+# Per-chunk LLM filter: keep only sentences relevant to the query, drop the
+# rest. Chunks with nothing relevant are dropped entirely. Results are cached
+# by (query_hash, chunk_id) so re-asking a query doesn't re-pay the LLM cost.
+_compress_cache: dict[tuple[str, int], str] = {}
+
+COMPRESS_PROMPT = (
+    "Return only the sentences in the passage below that are relevant to the "
+    "query. Copy them verbatim. If none are relevant, return an empty string.\n\n"
+    "Query: {query}\n\n"
+    "Passage:\n{passage}\n\n"
+    "Relevant sentences:"
+)
+
+
+def _query_hash(query: str) -> str:
+    return hashlib.sha1(query.encode()).hexdigest()[:12]
+
+
+def compress_chunk(query: str, chunk: dict) -> str:
+    """One LLM call: strip a chunk down to sentences relevant to `query`.
+
+    Returns the compressed text (possibly empty). Cached by (query_hash, chunk_id).
+    """
+    key = (_query_hash(query), chunk.get("chunk_id", -1))
+    if key in _compress_cache:
+        return _compress_cache[key]
+
+    prompt = COMPRESS_PROMPT.format(query=query, passage=chunk.get("text", ""))
+    resp = _get_groq().chat.completions.create(
+        model=LLM_MODEL,
+        messages=[{"role": "user", "content": prompt}],
+        temperature=0.0,
+    )
+    compressed = (resp.choices[0].message.content or "").strip()
+    _compress_cache[key] = compressed
+    return compressed
+
+
+def compress_results(query: str, chunks: list[dict]) -> list[dict]:
+    """Compress every chunk; drop chunks that come back empty."""
+    out: list[dict] = []
+    for chunk in chunks:
+        compressed = compress_chunk(query, chunk)
+        if compressed:  # drop empty (== nothing relevant)
+            out.append({**chunk, "text": compressed})
+    return out
 
 def retrieve_multi_query(query: str, k: int = 5) -> list[dict]:
     """Expand the query into N paraphrases, hybrid-search each over notes_all,
