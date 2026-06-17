@@ -26,7 +26,7 @@ import glob
 import os
 import time
 import hashlib
-
+import json  # add up top with the other imports if not already there
 from fastembed import SparseTextEmbedding, TextEmbedding
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from qdrant_client import QdrantClient, models
@@ -408,6 +408,64 @@ def compress_results(query: str, chunks: list[dict]) -> list[dict]:
         if compressed:  # drop empty (== nothing relevant)
             out.append({**chunk, "text": compressed})
     return out
+
+# ── Self-query: split a natural question into search text + metadata filters ──
+
+SELF_QUERY_SYSTEM = """You convert a user's question into a JSON search object.
+
+The document collection has this metadata schema:
+- section (string): one of ["IPv6", "SDN", "IoT", "SDN_5G", "Migration", "SDN_Security"]
+- kind (string): one of ["notes"]
+
+Return ONLY a JSON object with exactly these keys:
+{
+  "rewritten_query": "<the semantic search text, with filter words removed>",
+  "filters": { "section": "<one of the allowed values, or omit if unsure>" }
+}
+
+Rules:
+- Put ONLY the topic to search for in rewritten_query. Remove phrases like
+  "my X section", "in the Y notes" — those become filters, not search text.
+- Only include a filter key if the question clearly implies it. If unsure, use {} for filters.
+- Use the EXACT allowed values. Never invent a section name.
+- Output JSON only. No markdown, no commentary."""
+
+
+def self_query(question: str) -> dict:
+    """One LLM call: split a question into {rewritten_query, filters}."""
+    resp = _get_groq().chat.completions.create(
+        model=LLM_MODEL,
+        messages=[
+            {"role": "system", "content": SELF_QUERY_SYSTEM},
+            {"role": "user", "content": question},
+        ],
+        temperature=0.0,
+        response_format={"type": "json_object"},
+    )
+    raw = resp.choices[0].message.content or "{}"
+    try:
+        data = json.loads(raw)
+    except json.JSONDecodeError:
+        data = {}
+    return {
+        "rewritten_query": data.get("rewritten_query") or question,
+        "filters": data.get("filters") or {},
+    }
+
+ALLOWED_SECTIONS = {"IPv6", "SDN", "IoT", "SDN_5G", "Migration", "SDN_Security"}
+
+
+def filters_to_qdrant(filters: dict):
+    """Turn a {'section': 'SDN'} dict into a Qdrant Filter (or None)."""
+    conditions = []
+    section = filters.get("section")
+    if section in ALLOWED_SECTIONS:  # validate — ignore hallucinated values
+        conditions.append(
+            models.FieldCondition(key="section", match=models.MatchValue(value=section))
+        )
+    if not conditions:
+        return None
+    return models.Filter(must=conditions)
 
 def retrieve_multi_query(query: str, k: int = 5) -> list[dict]:
     """Expand the query into N paraphrases, hybrid-search each over notes_all,
