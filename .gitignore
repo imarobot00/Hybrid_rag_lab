@@ -5,6 +5,7 @@ __pycache__/
 *.pyo
 qdrant_storage/
 notes/
+docs/
 error_documentation.md
 daily.md
 hf_download_explained.md
