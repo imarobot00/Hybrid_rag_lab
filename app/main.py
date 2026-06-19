@@ -10,6 +10,7 @@ import logging
 
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import StreamingResponse
 from pydantic import BaseModel, Field
 
 from . import rag
@@ -65,4 +66,17 @@ def query(req: QueryRequest) -> dict:
         return rag.answer(req.question)
     except Exception as exc:  # noqa: BLE001
         logging.exception("Query failed")
+        raise HTTPException(status_code=500, detail=str(exc)) from exc
+
+
+@app.post("/stream")
+def stream(req: QueryRequest) -> StreamingResponse:
+    """Stream the answer token by token as plain text (Server-Sent style)."""
+    try:
+        return StreamingResponse(
+            rag.answer_stream(req.question),
+            media_type="text/plain",
+        )
+    except Exception as exc:  # noqa: BLE001
+        logging.exception("Stream failed")
         raise HTTPException(status_code=500, detail=str(exc)) from exc

@@ -171,3 +171,32 @@ def answer(question: str) -> dict:
         "contexts": [h["text"] for h in final],
         "pool_size": len(pooled),
     }
+
+
+# ── Streaming variant: same retrieval, but yield the answer token by token ──
+def answer_stream(question: str):
+    """Generator: run retrieval once, then stream the answer tokens.
+
+    Streaming and structured JSON conflict (you can't validate half a JSON), so
+    this streams plain prose. The non-streaming `answer()` keeps the structured
+    sources/contexts for callers that need provenance.
+    """
+    variants = expand_query(question)
+    pooled = multi_query_retrieve([question] + variants)
+    final = rerank(question, pooled, settings.top_k)
+
+    if not final:
+        yield "I don't know based on the provided notes."
+        return
+
+    prompt = PROMPT_TEMPLATE.format(context=_build_context(final), question=question)
+    stream = _groq.chat.completions.create(
+        model=settings.llm_model,
+        messages=[{"role": "user", "content": prompt}],
+        temperature=0,
+        stream=True,  # <-- response becomes an iterator of token chunks
+    )
+    for chunk in stream:
+        piece = chunk.choices[0].delta.content
+        if piece:  # final chunk's delta.content is None
+            yield piece

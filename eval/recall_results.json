@@ -74,15 +74,15 @@
   "vanilla": {
     "retriever": "vanilla",
     "total": 50,
-    "avg_latency_ms": 10.2,
+    "avg_latency_ms": 12.6,
     "extra_llm_calls": 0,
     "recall": {
-      "@1": 0.88,
+      "@1": 0.86,
       "@3": 0.96,
       "@5": 1.0
     },
     "hits": {
-      "@1": 44,
+      "@1": 43,
       "@3": 48,
       "@5": 50
     },
@@ -90,7 +90,7 @@
     "by_qtype": {
       "factoid": {
         "total": 26,
-        "@1": 1.0,
+        "@1": 0.9615,
         "@3": 1.0,
         "@5": 1.0
       },
@@ -313,8 +313,8 @@
         "hit@5": true,
         "got": [
           "Section_B_SDN.md",
-          "Section_B_SDN.md",
           "Section_A_Next_Generation_IP_Addressing.md",
+          "Section_B_SDN.md",
           "Section_B_SDN.md",
           "Section_B_SDN.md"
         ]
@@ -425,8 +425,8 @@
         "hit@5": true,
         "got": [
           "Section_B_SDN.md",
-          "Section_D_SDN_5G.md",
           "Section_E_Network_Migration.md",
+          "Section_D_SDN_5G.md",
           "Section_B_SDN.md",
           "Section_B_SDN.md"
         ]
@@ -442,7 +442,7 @@
           "Section_B_SDN.md",
           "Section_B_SDN.md",
           "Section_B_SDN.md",
-          "Section_A_Next_Generation_IP_Addressing.md"
+          "Section_B_SDN.md"
         ]
       },
       {
@@ -533,14 +533,14 @@
         "id": "sdn-031",
         "question": "What are the five key performance metrics for SDN controllers?",
         "want": "Section_B_SDN.md",
-        "hit@1": true,
+        "hit@1": false,
         "hit@5": true,
         "got": [
+          "Section_D_SDN_5G.md",
           "Section_B_SDN.md",
           "Section_D_SDN_5G.md",
           "Section_E_Network_Migration.md",
-          "Section_D_SDN_5G.md",
-          "Section_D_SDN_5G.md"
+          "Section_B_SDN.md"
         ]
       },
       {
